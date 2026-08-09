@@ -1,15 +1,15 @@
 import { loadProjects, type Project } from "./projects";
 import "./style.css";
 
-const TINTS = ["t1", "t2", "t3", "t4", "t5"];
+const TINTS = ["t1", "t2", "t3", "t4"];
 
 const STATUS: Record<string, { label: string; cls: string }> = {
-  live: { label: "Live", cls: "" },
-  beta: { label: "Beta", cls: "warn" },
-  lab: { label: "WIP", cls: "lab" },
-  internal: { label: "Internal", cls: "lab" },
-  private: { label: "Private", cls: "lab" },
-  archived: { label: "Stale", cls: "lab" },
+  live: { label: "Live", cls: "b-live" },
+  beta: { label: "Beta", cls: "b-beta" },
+  lab: { label: "WIP", cls: "b-lab" },
+  internal: { label: "Internal", cls: "b-internal" },
+  private: { label: "Private", cls: "b-private" },
+  archived: { label: "Stale", cls: "b-stale" },
 };
 
 function tint(name: string): string {
@@ -17,16 +17,16 @@ function tint(name: string): string {
   return TINTS[sum % TINTS.length];
 }
 
-function statusDot(p: Project): string {
-  const s = STATUS[p.status] ?? { label: p.status, cls: "lab" };
-  return `<span class="dot ${s.cls}"></span>${s.label}`;
+function badge(p: Project): string {
+  const s = STATUS[p.status] ?? { label: p.status, cls: "b-lab" };
+  return `<span class="badge ${s.cls}">${s.label}</span>`;
 }
 
 function card(p: Project): string {
   const desc = p.description && p.description !== "projet local (pas de repo GitHub)"
     ? p.description
     : "Experiment in the Memo Labs playground.";
-  const lang = p.language ? `<span>${p.language}</span>` : "";
+  const lang = p.language ? `<span class="chip">${p.language}</span>` : "";
   const href = p.url ?? p.repo ?? "https://memolabs.dev";
   return `
   <a class="card" href="${href}" target="_blank" rel="noopener">
@@ -34,19 +34,18 @@ function card(p: Project): string {
     <div class="cbody">
       <h3>${p.name}<span class="arrow">→</span></h3>
       <p>${desc}</p>
-      <div class="stack">${lang}</div>
-      <div class="curl">${statusDot(p)}<span class="arr">↗</span></div>
+      <div class="card-foot">${lang}${badge(p)}</div>
     </div>
   </a>`;
 }
 
-function section(title: string, lede: string, projects: Project[]): string {
+function section(title: string, projects: Project[]): string {
   return `
   <section class="sec">
     <div class="wrap">
       <div class="shead">
         <h2>${title}</h2>
-        <p>${lede}</p>
+        <span class="count">${projects.length}</span>
       </div>
       <div class="grid">${projects.map(card).join("")}</div>
     </div>
@@ -69,8 +68,8 @@ async function main() {
   const lab = projects.filter((p) => p.lab_candidate);
 
   root.innerHTML =
-    section("Live", "Shipped and running on the lab.", live) +
-    section("Playground", `WIP experiments — ${lab.length} prototypes and tools.`, lab);
+    section("Live", live) +
+    section("Playground", lab);
 }
 
 main();
