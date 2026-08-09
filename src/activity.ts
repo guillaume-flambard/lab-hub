@@ -3,6 +3,8 @@ export type WorkerActivity = {
   repo: string;
   status: string;
   detail: string;
+  thinking?: string;
+  order?: string[];
 };
 
 export type WorkerLearned = {
@@ -11,12 +13,14 @@ export type WorkerLearned = {
   last: string;
 };
 
-const BASE = "https://activity.memolabs.dev";
-
-export async function fetchState(): Promise<{
+export type WorkerState = {
   activity: WorkerActivity | null;
   learned: WorkerLearned | null;
-}> {
+};
+
+const BASE = "https://activity.memolabs.dev";
+
+export async function fetchState(): Promise<WorkerState> {
   try {
     const res = await fetch(`${BASE}/state`, { cache: "no-store" });
     if (!res.ok) return { activity: null, learned: null };
@@ -26,7 +30,7 @@ export async function fetchState(): Promise<{
   }
 }
 
-export function subscribe(cb: (activity: WorkerActivity) => void): () => void {
+export function subscribe(cb: (state: WorkerState) => void): () => void {
   let es: EventSource | null = null;
   if (typeof EventSource !== "undefined") {
     try {
@@ -34,7 +38,9 @@ export function subscribe(cb: (activity: WorkerActivity) => void): () => void {
       es.onmessage = (e) => {
         try {
           const d = JSON.parse(e.data);
-          if (d.type === "activity") cb(d);
+          if (d.type === "activity") {
+            cb({ activity: d.activity ?? null, learned: d.learned ?? null });
+          }
         } catch {}
       };
     } catch {}

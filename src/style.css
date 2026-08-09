@@ -139,14 +139,51 @@ h1.h .acc { color: var(--accent); }
   .backdrop .topo { animation: none; }
 }
 
-/* ── L'IA au travail (live) ─────────────────────────────────────────────── */
-.ia-box { border: 1px solid var(--line); padding: 24px 28px; background: var(--surface); }
-.ia-line { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.02em; }
-.ia-line .dot { width: 10px; height: 10px; border-radius: 50%; background: #c99a2e; flex: none; }
-.ia-box.live .ia-line .dot { background: #3fb56b; animation: ia-pulse 2s ease-in-out infinite; }
-@keyframes ia-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-.ia-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 10px;
-  color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
-.ia-learned { color: var(--accent); }
-.ia-learn { margin-top: 14px; font-size: 13px; color: var(--muted); font-family: monospace; white-space: pre-wrap; }
+
+/* ── L'IA au travail — la liane vivante ──────────────────────────────────── */
+.vine { border: 1px solid var(--line); }
+.vine-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 14px 22px; border-bottom: 1px solid var(--line);
+  font-family: var(--font); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; }
+.vn-dot { width: 8px; height: 8px; border-radius: 50%; background: #c99a2e; flex: none; }
+.vn-dot.live { background: #3fb56b; animation: vn-pulse 1.4s ease-in-out infinite; }
+@keyframes vn-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.vn-state { font-weight: 500; color: var(--ink); }
+.vn-learned { margin-left: auto; color: var(--accent); }
+
+.vine-stage { position: relative; padding: 20px 0; }
+.vn-svg { width: 100%; height: auto; display: block; }
+.vn-stem { fill: none; stroke: var(--line); stroke-width: 1.5; opacity: 0.5; }
+.vn-glow { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0.5; stroke-linecap: round; }
+
+.vn-leaf { fill: none; stroke: var(--accent-soft); stroke-width: 1; opacity: 0.25;
+  transition: opacity 0.5s ease, stroke 0.5s ease; }
+.vn-dotn { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.vn-dotn.vn-live { fill: var(--accent); stroke: var(--accent); }
+.vn-nodeg.vn-cur .vn-leaf { opacity: 0.9; stroke: var(--accent); }
+.vn-nodeg.vn-vis .vn-leaf { opacity: 0.6; }
+.vn-nodeg.vn-cur .vn-dotn { fill: var(--accent-soft); stroke: var(--accent); }
+.vn-label { font-family: var(--font); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.1em; fill: var(--muted); text-anchor: middle; }
+.vn-nodeg.vn-cur .vn-label { fill: var(--accent); }
+
+.vn-agent-halo { fill: var(--accent); opacity: 0.3; }
+.vn-agent-core { fill: var(--accent); stroke: #fff; stroke-width: 2; }
+
+.vn-thought { position: absolute; background: var(--ink); color: var(--bg);
+  font-family: "JetBrains Mono", monospace; font-size: 12.5px; line-height: 1.6;
+  padding: 12px 16px; max-width: 340px; transform: translate(-50%, -170%); z-index: 6;
+  border-left: 2px solid var(--accent); opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease; }
+.vn-thought.visible { opacity: 1; }
+.vn-thought::after { content: ""; position: absolute; left: 26px; bottom: -5px;
+  width: 10px; height: 10px; background: var(--ink); transform: rotate(45deg); }
+.vn-thought-dots { display: flex; gap: 5px; margin-bottom: 6px; opacity: 0; }
+.vn-thought-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-soft);
+  animation: vn-think 1s ease-in-out infinite; }
+.vn-thought-dots span:nth-child(2) { animation-delay: .15s; }
+.vn-thought-dots span:nth-child(3) { animation-delay: .3s; }
+@keyframes vn-think { 0%,100%{opacity:.2; transform:translateY(0)} 50%{opacity:1; transform:translateY(-3px)} }
+.vn-thinking { min-height: 20px; }
+.vn-thinking.typing::after { content: "▌"; color: var(--accent); animation: vn-blink .7s step-end infinite; }
+@keyframes vn-blink { 50% { opacity: 0; } }
