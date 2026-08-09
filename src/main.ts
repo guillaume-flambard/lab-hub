@@ -1,45 +1,61 @@
 import { loadProjects, type Project } from "./projects";
 import "./style.css";
 
+const TINTS = ["t1", "t2", "t3", "t4", "t5"];
+
 const STATUS_LABEL: Record<string, string> = {
-  live: "Live",
+  live: "En ligne",
   beta: "Beta",
   lab: "WIP",
-  internal: "Internal",
-  private: "Private",
-  archived: "Stale",
+  internal: "Interne",
+  private: "Privé",
+  archived: "Archivé",
 };
 
-function statusBadge(p: Project): string {
-  const label = STATUS_LABEL[p.status] ?? "WIP";
-  const cls = p.status === "live" ? "s-live" : p.status === "beta" ? "s-beta" : "s-lab";
-  return `<span class="status ${cls}"><span class="dot" aria-hidden></span>${label}</span>`;
+function tint(name: string): string {
+  const sum = [...name].reduce((a, c) => a + c.charCodeAt(0), 0);
+  return TINTS[sum % TINTS.length];
 }
 
-function row(p: Project): string {
-  const desc = p.description && p.description !== "projet local (pas de repo GitHub)"
+function badge(p: Project): string {
+  const label = STATUS_LABEL[p.status] ?? "WIP";
+  const cls = p.status === "live" ? "b-live" : p.status === "beta" ? "b-beta" : "b-lab";
+  return `<span class="badge ${cls}">${label}</span>`;
+}
+
+function cleanDesc(p: Project): string {
+  return p.description && p.description !== "projet local (pas de repo GitHub)"
     ? p.description
-    : "—";
-  const lang = p.language ? `<span class="meta-lang">${p.language}</span>` : "";
-  const href = p.url ?? p.repo ?? "https://memolabs.dev";
+    : "Expérimentation dans le lab Memo Labs.";
+}
+
+function card(p: Project): string {
+  const desc = cleanDesc(p);
+  const href = p.url ?? p.repo ?? "#";
+  const langChip = p.language ? `<span class="chip">${p.language}</span>` : "";
+  const ext = p.url ? "↗" : "→";
   return `
-  <a class="lrow" href="${href}" target="_blank" rel="noopener noreferrer">
-    <span class="lrow-name">${p.name}</span>
-    <span class="lrow-desc">${desc}</span>
-    <span class="lrow-meta">${lang}${statusBadge(p)}</span>
+  <a class="card" href="${href}" target="_blank" rel="noopener noreferrer">
+    <div class="thumb ${tint(p.name)}">${p.name}</div>
+    <div class="cbody">
+      <h3>${p.name}<span class="arrow">→</span></h3>
+      <p>${desc}</p>
+      <div class="stack">${langChip}</div>
+      <div class="foot-row">${badge(p)}<span class="go">${ext}</span></div>
+    </div>
   </a>`;
 }
 
-function group(title: string, note: string, projects: Project[]): string {
+function section(id: string, title: string, lede: string, projects: Project[]): string {
+  const cards = projects.map((p) => card(p)).join("");
   return `
-  <section class="lgroup">
+  <section id="${id}" class="sec">
     <div class="wrap">
-      <div class="lghead">
+      <div class="shead">
         <h2>${title}</h2>
-        <span class="lgcount">${projects.length}</span>
+        <p>${lede}</p>
       </div>
-      <p class="lglede">${note}</p>
-      <div class="llist">${projects.map(row).join("")}</div>
+      <div class="grid">${cards}</div>
     </div>
   </section>`;
 }
@@ -52,16 +68,20 @@ async function main() {
   try {
     projects = await loadProjects();
   } catch (e) {
-    root.innerHTML = `<div class="wrap"><p class="err">Failed to load projects.json: ${(e as Error).message}</p></div>`;
+    root.innerHTML = `<div class="wrap"><p class="err">Impossible de charger les projets : ${(e as Error).message}</p></div>`;
     return;
   }
 
-  const live = projects.filter((p) => p.status === "live");
+    const live = projects.filter((p) => p.status === "live");
   const lab = projects.filter((p) => p.lab_candidate);
+  const explorations = projects.filter(
+    (p) => (p.status === "beta" || p.status === "archived") && p.visibility === "PUBLIC" && p.description
+  ).slice(0, 12);
 
   root.innerHTML =
-    group("Live", "Shipped and running on the lab.", live) +
-    group("Playground", "WIP experiments — prototypes, agents and tools.", lab);
+    section("live", "En ligne", `Les produits Memo Labs déployés et accessibles — ${live.length} au total.`, live) +
+    section("lab", "Le lab", `Les expérimentations en cours — ${lab.length} prototypes, agents et outils.`, lab) +
+    section("explorations", "Explorations", "Des pistes explorées, en pause ou en beta — le travail continue.", explorations);
 }
 
 main();
