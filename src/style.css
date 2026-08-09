@@ -189,3 +189,24 @@ h1.h .acc { color: var(--accent); }
 .j-bubble-text { min-height: 18px; }
 .j-bubble-text::after { content: "▌"; color: var(--accent); animation: j-blink .7s step-end infinite; }
 @keyframes j-blink { 50% { opacity: 0; } }
+
+/* indicateur « pensée… » (points animés) */
+.j-think { position: absolute; background: var(--ink); padding: 10px 16px;
+  display: flex; gap: 5px; transform: translate(-50%, -190%); z-index: 7;
+  border-left: 2px solid var(--accent); }
+.j-think span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-soft);
+  animation: j-thinkdot 1.1s ease-in-out infinite; }
+.j-think span:nth-child(2) { animation-delay: .18s; }
+.j-think span:nth-child(3) { animation-delay: .36s; }
+@keyframes j-thinkdot { 0%,100%{opacity:.2; transform:translateY(0)} 50%{opacity:1; transform:translateY(-4px)} }
+
+/* particules qui dérivent le long du chemin */
+.j-particle { animation-timing-function: ease-in-out; }
+@keyframes j-drift {
+  0%,100% { opacity: 0; transform: translate(0,0); }
+  15% { opacity: .6; }
+  50% { transform: translate(4px,-6px); }
+  85% { opacity: .2; }
+}
+
+.j-bubble-text.done::after { content: ""; }
