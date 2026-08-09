@@ -86,7 +86,20 @@ async function main() {
     section("explorations", "Explorations", "Des pistes explorées, en pause ou en beta — le travail continue.", explorations);
 
   const sceneEl = document.getElementById("ia-scene");
-  if (sceneEl) renderScene(sceneEl, live.concat(lab).map((p) => ({ name: p.name, status: p.status })));
+  if (sceneEl) {
+    // les repos visités par le worker d'abord (ordre de voyage réel), puis le reste
+    const workerOrder = ["lab-infra", "weave", "ops-autopilot", "knockport", "fluxa", "memo-ui", "lab-hub"];
+    const all: { name: string; status: string }[] = live.concat(lab);
+    const merged: { name: string; status: string }[] = [...all];
+    for (const w of workerOrder) {
+      if (!merged.some((p) => p.name === w)) merged.push({ name: w, status: "lab" });
+    }
+    const sorted = workerOrder
+      .map((n) => merged.find((p) => p.name === n))
+      .filter(Boolean)
+      .concat(merged.filter((p) => !workerOrder.includes(p.name)));
+    renderScene(sceneEl, sorted.map((p) => ({ name: p!.name, status: p!.status })));
+  }
 }
 
 function sceneSection(): string {
