@@ -141,45 +141,51 @@ h1.h .acc { color: var(--accent); }
 
 
 
-/* ── L'IA au travail — agent board ───────────────────────────────────────── */
-.board { border: 1px solid var(--line); background: var(--surface);
+
+/* ── L'IA au travail — le voyage organique ──────────────────────────────── */
+.journey { border: 1px solid var(--line); background: var(--surface);
   box-shadow: 0 1px 0 var(--line), 0 12px 32px rgba(22,19,15,.04); }
-.board-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+.journey-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
   padding: 14px 20px; border-bottom: 1px solid var(--line);
   font-family: var(--font); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
-.bd-dot { width: 8px; height: 8px; border-radius: 50%; background: #c99a2e; flex: none; }
-.bd-dot.live { background: #3fb56b; animation: bd-pulse 1.4s ease-in-out infinite; }
-@keyframes bd-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-.bd-state { font-weight: 500; color: var(--ink); }
-.bd-progress { flex: 1; height: 2px; background: var(--line); margin: 0 8px; min-width: 60px; }
-.bd-bar { display: block; height: 100%; width: 0; background: var(--accent);
-  transition: width .6s cubic-bezier(.2,.7,.2,1); }
-.bd-learned { color: var(--accent); }
+.j-dot { width: 8px; height: 8px; border-radius: 50%; background: #c99a2e; flex: none; }
+.j-dot.live { background: #3fb56b; animation: j-pulse 1.4s ease-in-out infinite; }
+@keyframes j-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.j-state { font-weight: 500; color: var(--ink); }
+.j-learned { margin-left: auto; color: var(--accent); }
 
-.bd-items { padding: 6px 0; }
-.bd-item { display: flex; align-items: center; gap: 12px;
-  padding: 10px 20px; border-bottom: 1px solid var(--line); font-family: var(--font);
-  font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
-.bd-item:last-child { border-bottom: none; }
-.bd-item-dot { width: 7px; height: 7px; border-radius: 50%; flex: none;
-  background: var(--line2); transition: background .3s; }
-.bd-item-name { font-weight: 500; color: var(--muted); flex: 1; }
-.bd-item-live { font-size: 10px; color: var(--accent); border: 1px solid var(--accent);
-  padding: 1px 7px; letter-spacing: 0.14em; }
-.bd-item-state { font-size: 10px; color: var(--muted); letter-spacing: 0.14em; }
+.journey-stage { position: relative; }
+.j-svg { width: 100%; height: auto; display: block; }
 
-.bd-item.running { background: color-mix(in srgb, var(--accent-soft) 9%, var(--surface)); }
-.bd-item.running .bd-item-dot { background: var(--accent); animation: bd-pulse 1s infinite; }
-.bd-item.running .bd-item-name { color: var(--accent); }
-.bd-item.running .bd-item-state { color: var(--accent); }
-.bd-item.done .bd-item-dot { background: #3fb56b; }
-.bd-item.done .bd-item-name { color: var(--muted); opacity: .75; }
-.bd-item.next .bd-item-dot { background: var(--line2); }
-.bd-item.next .bd-item-name { color: var(--ink); }
+.j-path { fill: none; stroke: var(--line); stroke-width: 2; stroke-linecap: round; }
+.j-trail { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round;
+  opacity: 0.85; filter: drop-shadow(0 0 6px rgba(173,76,22,.35)); }
 
-.bd-thinking { padding: 14px 20px; background: var(--ink); color: var(--bg);
-  display: flex; gap: 12px; align-items: flex-start; }
-.bd-thinking-caret { width: 3px; height: 18px; background: var(--accent); flex: none;
-  animation: bd-blink .8s step-end infinite; }
-@keyframes bd-blink { 50% { opacity: 0; } }
-.bd-text { font-family: "JetBrains Mono", monospace; font-size: 12.5px; line-height: 1.6; }
+.j-nodeg { transition: opacity .4s ease; }
+.j-leaf { fill: none; stroke: var(--accent-soft); stroke-width: 1; opacity: .25;
+  transition: opacity .5s, stroke .5s; }
+.j-core { fill: none; stroke: var(--muted); stroke-width: 1.5; transition: fill .3s; }
+.j-core.j-live { fill: var(--accent); stroke: var(--accent); }
+.j-nodeg.j-vis .j-leaf { opacity: .6; stroke: var(--accent); }
+.j-nodeg.j-cur .j-leaf { opacity: 1; stroke: var(--accent); }
+.j-nodeg.j-cur .j-core { fill: var(--accent-soft); stroke: var(--accent); }
+.j-label { font-family: var(--font); font-size: 12px; text-transform: uppercase;
+  letter-spacing: .12em; fill: var(--muted); }
+.j-nodeg.j-cur .j-label { fill: var(--accent); }
+
+.j-agent { pointer-events: none; }
+.j-halo { fill: var(--accent); opacity: .2; }
+.j-core { fill: var(--accent); stroke: #fff; stroke-width: 2; }
+.j-spark { fill: var(--accent-soft); }
+
+.j-bubble { position: absolute; background: var(--ink); color: var(--bg);
+  font-family: "JetBrains Mono", monospace; font-size: 12px; line-height: 1.5;
+  padding: 10px 14px; max-width: 320px; transform: translate(-50%, -190%); z-index: 6;
+  border-left: 2px solid var(--accent); opacity: 0; visibility: hidden;
+  pointer-events: none; transition: opacity .25s ease, visibility .25s; }
+.j-bubble::after { content: ""; position: absolute; left: 26px; bottom: -5px;
+  width: 10px; height: 10px; background: var(--ink); transform: rotate(45deg); }
+.j-bubble.show { opacity: 1; visibility: visible; }
+.j-bubble-text { min-height: 18px; }
+.j-bubble-text::after { content: "▌"; color: var(--accent); animation: j-blink .7s step-end infinite; }
+@keyframes j-blink { 50% { opacity: 0; } }
