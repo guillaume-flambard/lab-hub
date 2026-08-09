@@ -1,54 +1,45 @@
 import { loadProjects, type Project } from "./projects";
 import "./style.css";
 
-const TINTS = ["t1", "t2", "t3", "t4", "t5"];
-
-const STATUS: Record<string, { label: string; cls: string }> = {
-  live: { label: "Live", cls: "" },
-  beta: { label: "Beta", cls: "warn" },
-  lab: { label: "WIP", cls: "lab" },
-  internal: { label: "Internal", cls: "lab" },
-  private: { label: "Private", cls: "lab" },
-  archived: { label: "Stale", cls: "lab" },
+const STATUS_LABEL: Record<string, string> = {
+  live: "Live",
+  beta: "Beta",
+  lab: "WIP",
+  internal: "Internal",
+  private: "Private",
+  archived: "Stale",
 };
 
-function tint(name: string): string {
-  const sum = [...name].reduce((a, c) => a + c.charCodeAt(0), 0);
-  return TINTS[sum % TINTS.length];
+function statusBadge(p: Project): string {
+  const label = STATUS_LABEL[p.status] ?? "WIP";
+  const cls = p.status === "live" ? "s-live" : p.status === "beta" ? "s-beta" : "s-lab";
+  return `<span class="status ${cls}"><span class="dot" aria-hidden></span>${label}</span>`;
 }
 
-function statusDot(p: Project): string {
-  const s = STATUS[p.status] ?? { label: p.status, cls: "lab" };
-  return `<span class="dot ${s.cls}"></span>${s.label}`;
-}
-
-function card(p: Project): string {
+function row(p: Project): string {
   const desc = p.description && p.description !== "projet local (pas de repo GitHub)"
     ? p.description
-    : "Experiment in the Memo Labs playground.";
-  const lang = p.language ? `<span>${p.language}</span>` : "";
+    : "—";
+  const lang = p.language ? `<span class="meta-lang">${p.language}</span>` : "";
   const href = p.url ?? p.repo ?? "https://memolabs.dev";
   return `
-  <a class="card" href="${href}" target="_blank" rel="noopener">
-    <div class="thumb ${tint(p.name)}">${p.name}</div>
-    <div class="cbody">
-      <h3>${p.name}<span class="arrow">→</span></h3>
-      <p>${desc}</p>
-      <div class="stack">${lang}</div>
-      <div class="curl">${statusDot(p)}<span class="arr">↗</span></div>
-    </div>
+  <a class="lrow" href="${href}" target="_blank" rel="noopener noreferrer">
+    <span class="lrow-name">${p.name}</span>
+    <span class="lrow-desc">${desc}</span>
+    <span class="lrow-meta">${lang}${statusBadge(p)}</span>
   </a>`;
 }
 
-function section(title: string, lede: string, projects: Project[]): string {
+function group(title: string, note: string, projects: Project[]): string {
   return `
-  <section class="sec">
+  <section class="lgroup">
     <div class="wrap">
-      <div class="shead">
+      <div class="lghead">
         <h2>${title}</h2>
-        <p>${lede}</p>
+        <span class="lgcount">${projects.length}</span>
       </div>
-      <div class="grid">${projects.map(card).join("")}</div>
+      <p class="lglede">${note}</p>
+      <div class="llist">${projects.map(row).join("")}</div>
     </div>
   </section>`;
 }
@@ -69,8 +60,8 @@ async function main() {
   const lab = projects.filter((p) => p.lab_candidate);
 
   root.innerHTML =
-    section("Live", "Shipped and running on the lab.", live) +
-    section("Playground", `WIP experiments — ${lab.length} prototypes and tools.`, lab);
+    group("Live", "Shipped and running on the lab.", live) +
+    group("Playground", "WIP experiments — prototypes, agents and tools.", lab);
 }
 
 main();
