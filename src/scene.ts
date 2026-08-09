@@ -1,4 +1,4 @@
-import { fetchState, subscribe, type WorkerActivity, type WorkerState } from "./activity";
+import { fetchState, subscribe, type WorkerActivity } from "./activity";
 
 type ProjectNode = { name: string; live: boolean; x: number; y: number };
 
@@ -131,7 +131,6 @@ export function renderScene(
   }
 
   function apply(a: WorkerActivity, learned?: number): void {
-    if (typeof learned === "number") learnedEl.textContent = `${learned} patterns appris`;
     if (a.repo === "system") {
       stateEl.textContent = a.detail || "cycle en cours";
       if (a.status === "cycle_start") visited.length = 0;
@@ -145,17 +144,16 @@ export function renderScene(
     const mins = Math.max(0, Math.round((Date.now() - new Date(a.ts).getTime()) / 60000));
     stateEl.textContent = `sur ${a.repo}`;
     detailEl.textContent = `${a.detail} · il y a ${mins} min`;
+    if (typeof learned === "number") learnedEl.textContent = `${learned} patterns appris`;
     pushJournal(a);
-  }
-
-  function applyState(s: WorkerState): void {
-    if (s.activity) apply(s.activity, s.learned?.total_learned);
-    else { stateEl.textContent = "agent hors ligne"; dotEl.classList.remove("live"); }
   }
 
   drawLinks();
   drawNodes();
 
-  fetchState().then(applyState);
-  subscribe(applyState);
+  fetchState().then((s) => {
+    if (s.activity) apply(s.activity, s.learned?.total_learned);
+    else { stateEl.textContent = "agent hors ligne"; dotEl.classList.remove("live"); }
+  });
+  subscribe((a) => apply(a));
 }
