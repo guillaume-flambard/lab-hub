@@ -1,47 +1,55 @@
 import { loadProjects, type Project } from "./projects";
 import "./style.css";
 
-const BADGES: Record<string, { label: string; cls: string }> = {
-  live: { label: "Live", cls: "b-live" },
-  internal: { label: "Internal", cls: "b-internal" },
-  beta: { label: "Beta", cls: "b-beta" },
-  lab: { label: "WIP", cls: "b-lab" },
-  private: { label: "Private", cls: "b-private" },
-  archived: { label: "Stale", cls: "b-stale" },
+const TINTS = ["t1", "t2", "t3", "t4", "t5"];
+
+const STATUS: Record<string, { label: string; cls: string }> = {
+  live: { label: "Live", cls: "" },
+  beta: { label: "Beta", cls: "warn" },
+  lab: { label: "WIP", cls: "lab" },
+  internal: { label: "Internal", cls: "lab" },
+  private: { label: "Private", cls: "lab" },
+  archived: { label: "Stale", cls: "lab" },
 };
 
-function badge(p: Project): string {
-  const b = BADGES[p.status] ?? { label: p.status, cls: "b-internal" };
-  return `<span class="badge ${b.cls}">${b.label}</span>`;
+function tint(name: string): string {
+  const sum = [...name].reduce((a, c) => a + c.charCodeAt(0), 0);
+  return TINTS[sum % TINTS.length];
+}
+
+function statusDot(p: Project): string {
+  const s = STATUS[p.status] ?? { label: p.status, cls: "lab" };
+  return `<span class="dot ${s.cls}"></span>${s.label}`;
 }
 
 function card(p: Project): string {
   const desc = p.description && p.description !== "projet local (pas de repo GitHub)"
-    ? p.description : p.name;
-  const lang = p.language ? `<span class="chip">${p.language}</span>` : "";
-  const href = p.url ?? p.repo ?? "#";
-  const external = p.url ? "↗" : "→";
+    ? p.description
+    : "Experiment in the Memo Labs playground.";
+  const lang = p.language ? `<span>${p.language}</span>` : "";
+  const href = p.url ?? p.repo ?? "https://memolabs.dev";
   return `
   <a class="card" href="${href}" target="_blank" rel="noopener">
-    <div class="card-head">
-      <span class="name">${p.name}</span>${badge(p)}
-    </div>
-    <p class="desc">${desc}</p>
-    <div class="card-foot">
-      ${lang}
-      <span class="go">${external}</span>
+    <div class="thumb ${tint(p.name)}">${p.name}</div>
+    <div class="cbody">
+      <h3>${p.name}<span class="arrow">→</span></h3>
+      <p>${desc}</p>
+      <div class="stack">${lang}</div>
+      <div class="curl">${statusDot(p)}<span class="arr">↗</span></div>
     </div>
   </a>`;
 }
 
-function section(title: string, note: string, projects: Project[]): string {
+function section(title: string, lede: string, projects: Project[]): string {
   return `
-  <section class="section">
-    <div class="sec-head">
-      <h2>${title}</h2>
-      <span class="sec-note">${note}</span>
+  <section class="sec">
+    <div class="wrap">
+      <div class="shead">
+        <h2>${title}</h2>
+        <p>${lede}</p>
+      </div>
+      <div class="grid">${projects.map(card).join("")}</div>
     </div>
-    <div class="grid">${projects.map(card).join("")}</div>
   </section>`;
 }
 
@@ -53,7 +61,7 @@ async function main() {
   try {
     projects = await loadProjects();
   } catch (e) {
-    root.innerHTML = `<p class="err">Failed to load projects.json: ${(e as Error).message}</p>`;
+    root.innerHTML = `<div class="wrap"><p class="err">Failed to load projects.json: ${(e as Error).message}</p></div>`;
     return;
   }
 
@@ -61,8 +69,8 @@ async function main() {
   const lab = projects.filter((p) => p.lab_candidate);
 
   root.innerHTML =
-    section("Live", "shipped & running on the lab", live) +
-    section("Playground", `${lab.length} WIP experiments`, lab);
+    section("Live", "Shipped and running on the lab.", live) +
+    section("Playground", `WIP experiments — ${lab.length} prototypes and tools.`, lab);
 }
 
 main();

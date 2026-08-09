@@ -3,23 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MemoLabs · Lab</title>
+    <title>Memo Labs · The lab</title>
     <meta name="description" content="Memo Labs playground — WIP demos, prototypes and experiments by Guillaume Flambard." />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23faf9f7'/><circle cx='16' cy='16' r='6' fill='%23ad4c16'/></svg>" />
   </head>
   <body>
-    <div id="app">
-      <header class="hero">
-        <p class="kicker">memo labs · playground</p>
-        <h1>The lab</h1>
-        <p class="sub">Prototypes, agents and WIP experiments — rough around the edges, but real.</p>
-      </header>
-      <main id="content"></main>
-      <footer class="foot">
-        <span>Memo Labs — experiments by <a href="https://github.com/guillaume-flambard">Guillaume Flambard</a></span>
-        <span>Data: <code>lab-infra/docs/projects.json</code></span>
-      </footer>
+    <div class="backdrop" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+        <g class="topo">
+          <ellipse cx="1180" cy="250" rx="90" ry="66" transform="rotate(-18 1180 250)" />
+          <ellipse cx="1180" cy="250" rx="150" ry="112" transform="rotate(-16 1180 250)" />
+          <ellipse cx="1178" cy="248" rx="214" ry="158" transform="rotate(-14 1178 248)" />
+          <ellipse class="hot" cx="1176" cy="246" rx="282" ry="206" transform="rotate(-12 1176 246)" />
+          <ellipse cx="1172" cy="244" rx="356" ry="258" transform="rotate(-10 1172 244)" />
+          <ellipse cx="1168" cy="242" rx="436" ry="314" transform="rotate(-8 1168 242)" />
+          <ellipse cx="1162" cy="240" rx="522" ry="374" transform="rotate(-6 1162 240)" />
+        </g>
+        <g class="topo slow">
+          <ellipse cx="980" cy="880" rx="120" ry="52" transform="rotate(8 980 880)" />
+          <ellipse cx="980" cy="880" rx="220" ry="96" transform="rotate(7 980 880)" />
+          <ellipse class="hot" cx="978" cy="882" rx="330" ry="144" transform="rotate(6 978 882)" />
+          <ellipse cx="976" cy="884" rx="450" ry="196" transform="rotate(5 976 884)" />
+        </g>
+        <g class="branch">
+          <path class="stem" pathLength="100" d="M96 900 C 118 762, 150 690, 186 604 C 222 518, 244 452, 252 356 C 258 282, 250 224, 236 168" />
+          <path class="twig" pathLength="100" d="M204 548 C 250 528, 288 494, 312 442" />
+          <path class="twig" pathLength="100" d="M240 420 C 196 398, 164 362, 148 310" />
+          <path class="twig" pathLength="100" d="M251 330 C 296 312, 330 282, 352 238" />
+          <g class="leaves">
+            <ellipse cx="318" cy="436" rx="26" ry="11" transform="rotate(-32 318 436)" />
+            <ellipse cx="142" cy="304" rx="24" ry="10" transform="rotate(38 142 304)" />
+            <ellipse cx="358" cy="232" rx="22" ry="9" transform="rotate(-34 358 232)" />
+            <circle class="node" cx="236" cy="168" r="4" />
+          </g>
+        </g>
+      </svg>
     </div>
+
+    <nav class="nav">
+      <div class="wrap">
+        <a class="brand" href="https://memolabs.dev">Memo Labs</a>
+        <div class="navright">
+          <a href="https://memolabs.dev">Portfolio</a>
+          <a class="on" href="/">The lab</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="wrap">
+        <p class="eyebrow"><span class="r"></span>The lab</p>
+        <h1 class="h">Prototypes,<br />agents &amp; <span class="acc">WIP</span></h1>
+        <p class="lede">
+          Rough around the edges, but real. Experiments by
+          <b>Guillaume Flambard</b> — the finished work lives on the
+          <a class="txtlink" href="https://memolabs.dev">portfolio</a>.
+        </p>
+      </div>
+    </header>
+
+    <main id="content"></main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <span>© Memo Labs</span>
+        <span>data · <code>lab-infra/docs/projects.json</code></span>
+      </div>
+    </footer>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
