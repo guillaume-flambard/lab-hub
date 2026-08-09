@@ -3,7 +3,6 @@ export type WorkerActivity = {
   repo: string;
   status: string;
   detail: string;
-  order?: string[];
 };
 
 export type WorkerLearned = {
