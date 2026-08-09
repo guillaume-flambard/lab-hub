@@ -1,5 +1,5 @@
 import { loadProjects, type Project } from "./projects";
-import { renderScene } from "./scene";
+import { fetchState, subscribe } from "./activity";
 import "./style.css";
 
 const TINTS = ["t1", "t2", "t3", "t4", "t5"];
@@ -73,24 +73,61 @@ async function main() {
     return;
   }
 
-  const live = projects.filter((p) => p.status === "live");
+    const live = projects.filter((p) => p.status === "live");
   const lab = projects.filter((p) => p.lab_candidate);
   const explorations = projects.filter(
     (p) => (p.status === "beta" || p.status === "archived") && p.visibility === "PUBLIC" && p.description
   ).slice(0, 12);
 
   root.innerHTML =
-    sceneSection() +
+    activitySection() +
     section("live", "En ligne", `Les produits Memo Labs déployés et accessibles — ${live.length} au total.`, live) +
     section("lab", "Le lab", `Les expérimentations en cours — ${lab.length} prototypes, agents et outils.`, lab) +
     section("explorations", "Explorations", "Des pistes explorées, en pause ou en beta — le travail continue.", explorations);
 
-  const sceneEl = document.getElementById("ia-scene");
-  if (sceneEl) renderScene(sceneEl, live.concat(lab).map((p) => ({ name: p.name, status: p.status })));
+  wireActivity();
 }
 
-function sceneSection(): string {
-  return `<section id="ia" class="sec ia"><div class="wrap" id="ia-scene"></div></section>`;
+function activitySection(): string {
+  return `
+  <section id="ia" class="sec ia">
+    <div class="wrap">
+      <div class="shead">
+        <h2>L'IA <span class="acc">au travail</span></h2>
+        <p>L'agent de Memo Labs surveille les repos 24/7 — et apprend à chaque cycle.</p>
+      </div>
+      <div id="ia-status" class="ia-box">
+        <div class="ia-line"><span class="dot live" aria-hidden></span><span id="ia-state">connexion…</span></div>
+        <div class="ia-meta">
+          <span id="ia-detail"></span>
+          <span id="ia-learned" class="ia-learned"></span>
+        </div>
+      </div>
+      <div id="ia-learn" class="ia-learn"></div>
+    </div>
+  </section>`;
+}
+
+function wireActivity(): void {
+  const el = document.getElementById("ia-state");
+  const det = document.getElementById("ia-detail");
+  const learned = document.getElementById("ia-learned");
+  const box = document.getElementById("ia-status");
+  if (!el || !det || !learned || !box) return;
+
+  const render = (a: { repo: string; status: string; detail: string; ts: string }, n?: number) => {
+    el.textContent = a.status === "working" ? `sur ${a.repo}` : a.status === "cycle_start" ? "cycle en cours" : a.detail || a.status;
+    det.textContent = a.ts ? `il y a ${Math.max(0, Math.round((Date.now() - new Date(a.ts).getTime()) / 60000))} min` : "";
+    if (typeof n === "number") learned.textContent = n > 0 ? `${n} patterns appris` : "";
+    box.classList.add("live");
+  };
+
+  fetchState().then((s) => {
+    if (s.activity) render(s.activity, s.learned?.total_learned);
+    else { el.textContent = "agent hors ligne"; box.classList.remove("live"); }
+  });
+
+  subscribe((a) => render(a));
 }
 
 main();
