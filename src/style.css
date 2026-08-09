@@ -140,38 +140,43 @@ h1.h .acc { color: var(--accent); }
 }
 
 
-/* ── L'IA au travail — scène (L'Atelier Haussmann) ──────────────────────── */
-.scene { border: 1px solid var(--line); }
-.scene-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+
+/* ── L'IA au travail — la plante vivante ────────────────────────────────── */
+.vine { border: 1px solid var(--line); }
+.vine-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
   padding: 14px 22px; border-bottom: 1px solid var(--line);
   font-family: var(--font); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; }
-.sc-dot { width: 8px; height: 8px; border-radius: 50%; background: #c99a2e; flex: none; }
-.sc-dot.live { background: #3fb56b; animation: sc-pulse 2s ease-in-out infinite; }
-@keyframes sc-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
-.sc-state { font-weight: 500; color: var(--ink); }
-.sc-detail { color: var(--muted); }
-.sc-learned { margin-left: auto; color: var(--accent); }
+.vn-dot { width: 8px; height: 8px; border-radius: 50%; background: #c99a2e; flex: none; }
+.vn-dot.live { background: #3fb56b; animation: vn-pulse 1.6s ease-in-out infinite; }
+@keyframes vn-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.vn-state { font-weight: 500; color: var(--ink); }
+.vn-learned { margin-left: auto; color: var(--accent); }
 
-.scene-map { position: relative; }
-.sc-svg { width: 100%; height: auto; display: block; }
-.sc-link { fill: none; stroke: var(--line); stroke-width: 1; }
-.sc-trail { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4 3; opacity: 0.5; }
-.sc-ring { fill: none; stroke: var(--muted); stroke-width: 1; }
-.sc-ring.sc-node-live { stroke: var(--accent); fill: var(--accent); }
-.sc-nodeg.sc-cur .sc-ring { fill: var(--accent-soft); stroke: var(--accent); }
-.sc-nodeg.sc-visited .sc-ring { stroke: var(--accent); opacity: 0.6; }
-.sc-label { font-family: var(--font); font-size: 10px; text-transform: uppercase;
-  letter-spacing: 0.08em; fill: var(--muted); }
-.sc-nodeg.sc-cur .sc-label { fill: var(--accent); }
+.vine-stage { position: relative; padding: 30px 0 20px; }
+.vn-svg { width: 100%; height: auto; display: block; }
+.vn-stem { fill: none; stroke: var(--line); stroke-width: 1; opacity: 0.6; }
+.vn-liana { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.2,0.7,0.2,1); opacity: 0.85; }
 
-.sc-entity { fill: var(--accent); stroke: #fff; stroke-width: 2;
-  transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1); filter: drop-shadow(0 0 6px rgba(173,76,22,.4)); }
-.sc-bubble { position: absolute; background: var(--ink); color: var(--bg);
-  font-family: var(--font); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
-  padding: 6px 14px; transform: translate(-50%, -130%); z-index: 5; transition: opacity .3s; }
+.vn-leaf { fill: none; stroke: var(--accent-soft); stroke-width: 1; opacity: 0;
+  transition: opacity 0.6s ease-in; }
+.vn-nodeg.leaf-out .vn-leaf, .vn-nodeg .leaf-out .vn-leaf { opacity: 0.7; }
+.vn-dotn { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.vn-dotn.vn-live { fill: var(--accent); stroke: var(--accent); }
+.vn-nodeg.vn-cur .vn-dotn { fill: var(--accent-soft); stroke: var(--accent); }
+.vn-nodeg.vn-cur .vn-leaf { opacity: 0.9; stroke: var(--accent); }
+.vn-label { font-family: var(--font); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.1em; fill: var(--muted); text-anchor: middle; }
+.vn-nodeg.vn-cur .vn-label { fill: var(--accent); }
 
-.sc-journal { border-top: 1px solid var(--line); padding: 10px 22px 14px; }
-.sc-journal-title { font-family: var(--font); font-size: 11px; text-transform: uppercase;
-  letter-spacing: 0.2em; color: var(--accent); margin-bottom: 8px; }
-.sc-lines { max-height: 120px; overflow-y: auto; }
-.sc-line { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); padding: 2px 0; }
+.vn-thought { position: absolute; background: var(--ink); color: var(--bg);
+  font-family: "JetBrains Mono", monospace; font-size: 12px; line-height: 1.5;
+  padding: 12px 16px; max-width: 340px; transform: translate(-50%, -160%); z-index: 6;
+  border-left: 2px solid var(--accent); transition: opacity 0.3s; }
+.vn-thought::after { content: ""; position: absolute; left: 24px; bottom: -5px;
+  width: 10px; height: 10px; background: var(--ink); transform: rotate(45deg); }
+.vn-thought-label { font-family: var(--font); font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.18em; color: var(--accent-soft); margin-bottom: 5px; }
+.vn-thinking { min-height: 18px; }
+.vn-thought.typing .vn-thinking::after { content: "▌"; color: var(--accent); animation: vn-blink .7s step-end infinite; }
+@keyframes vn-blink { 50% { opacity: 0; } }

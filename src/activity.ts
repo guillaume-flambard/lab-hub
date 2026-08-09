@@ -3,6 +3,7 @@ export type WorkerActivity = {
   repo: string;
   status: string;
   detail: string;
+  thinking?: string;
   order?: string[];
 };
 
