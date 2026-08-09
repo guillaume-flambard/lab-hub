@@ -140,56 +140,46 @@ h1.h .acc { color: var(--accent); }
 }
 
 
-/* ── L'IA au travail — la liane vivante ──────────────────────────────────── */
-.vine { border: 1px solid var(--line); position: relative;
-  background: color-mix(in srgb, var(--bg) 78%, transparent);
-  backdrop-filter: blur(10px) saturate(1.05);
-  -webkit-backdrop-filter: blur(10px) saturate(1.05); }
-.vine-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  padding: 14px 22px; border-bottom: 1px solid var(--line);
-  font-family: var(--font); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; }
-.vn-dot { width: 8px; height: 8px; border-radius: 50%; background: #c99a2e; flex: none; }
-.vn-dot.live { background: #3fb56b; animation: vn-pulse 1.4s ease-in-out infinite; }
-@keyframes vn-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-.vn-state { font-weight: 500; color: var(--ink); }
-.vn-learned { margin-left: auto; color: var(--accent); }
 
-.vine-stage { position: relative; padding: 20px 0; }
-.vine-stage::before { content: ""; position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(to top, var(--bg), color-mix(in srgb, var(--bg) 92%, transparent) 60%, color-mix(in srgb, var(--bg) 82%, transparent));
-  pointer-events: none; }
-.vn-svg { width: 100%; height: auto; display: block; position: relative; z-index: 1; }
-.vn-stem { fill: none; stroke: var(--line); stroke-width: 1.5; opacity: 0.5; }
-.vn-glow { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0.5; stroke-linecap: round; }
+/* ── L'IA au travail — agent board ───────────────────────────────────────── */
+.board { border: 1px solid var(--line); background: var(--surface);
+  box-shadow: 0 1px 0 var(--line), 0 12px 32px rgba(22,19,15,.04); }
+.board-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 14px 20px; border-bottom: 1px solid var(--line);
+  font-family: var(--font); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
+.bd-dot { width: 8px; height: 8px; border-radius: 50%; background: #c99a2e; flex: none; }
+.bd-dot.live { background: #3fb56b; animation: bd-pulse 1.4s ease-in-out infinite; }
+@keyframes bd-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.bd-state { font-weight: 500; color: var(--ink); }
+.bd-progress { flex: 1; height: 2px; background: var(--line); margin: 0 8px; min-width: 60px; }
+.bd-bar { display: block; height: 100%; width: 0; background: var(--accent);
+  transition: width .6s cubic-bezier(.2,.7,.2,1); }
+.bd-learned { color: var(--accent); }
 
-.vn-leaf { fill: none; stroke: var(--accent-soft); stroke-width: 1; opacity: 0.25;
-  transition: opacity 0.5s ease, stroke 0.5s ease; }
-.vn-dotn { fill: none; stroke: var(--muted); stroke-width: 1.2; }
-.vn-dotn.vn-live { fill: var(--accent); stroke: var(--accent); }
-.vn-nodeg.vn-cur .vn-leaf { opacity: 0.9; stroke: var(--accent); }
-.vn-nodeg.vn-vis .vn-leaf { opacity: 0.6; }
-.vn-nodeg.vn-cur .vn-dotn { fill: var(--accent-soft); stroke: var(--accent); }
-.vn-label { font-family: var(--font); font-size: 11px; text-transform: uppercase;
-  letter-spacing: 0.1em; fill: var(--muted); text-anchor: middle; }
-.vn-nodeg.vn-cur .vn-label { fill: var(--accent); }
+.bd-items { padding: 6px 0; }
+.bd-item { display: flex; align-items: center; gap: 12px;
+  padding: 10px 20px; border-bottom: 1px solid var(--line); font-family: var(--font);
+  font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+.bd-item:last-child { border-bottom: none; }
+.bd-item-dot { width: 7px; height: 7px; border-radius: 50%; flex: none;
+  background: var(--line2); transition: background .3s; }
+.bd-item-name { font-weight: 500; color: var(--muted); flex: 1; }
+.bd-item-live { font-size: 10px; color: var(--accent); border: 1px solid var(--accent);
+  padding: 1px 7px; letter-spacing: 0.14em; }
+.bd-item-state { font-size: 10px; color: var(--muted); letter-spacing: 0.14em; }
 
-.vn-agent-halo { fill: var(--accent); opacity: 0.3; }
-.vn-agent-core { fill: var(--accent); stroke: #fff; stroke-width: 2; }
+.bd-item.running { background: color-mix(in srgb, var(--accent-soft) 9%, var(--surface)); }
+.bd-item.running .bd-item-dot { background: var(--accent); animation: bd-pulse 1s infinite; }
+.bd-item.running .bd-item-name { color: var(--accent); }
+.bd-item.running .bd-item-state { color: var(--accent); }
+.bd-item.done .bd-item-dot { background: #3fb56b; }
+.bd-item.done .bd-item-name { color: var(--muted); opacity: .75; }
+.bd-item.next .bd-item-dot { background: var(--line2); }
+.bd-item.next .bd-item-name { color: var(--ink); }
 
-.vn-thought { position: absolute; background: var(--ink); color: var(--bg);
-  font-family: "JetBrains Mono", monospace; font-size: 12.5px; line-height: 1.6;
-  padding: 12px 16px; max-width: 340px; transform: translate(-50%, -170%); z-index: 6;
-  border-left: 2px solid var(--accent); opacity: 0; pointer-events: none;
-  transition: opacity 0.25s ease; }
-.vn-thought.visible { opacity: 1; }
-.vn-thought::after { content: ""; position: absolute; left: 26px; bottom: -5px;
-  width: 10px; height: 10px; background: var(--ink); transform: rotate(45deg); }
-.vn-thought-dots { display: flex; gap: 5px; margin-bottom: 6px; opacity: 0; }
-.vn-thought-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-soft);
-  animation: vn-think 1s ease-in-out infinite; }
-.vn-thought-dots span:nth-child(2) { animation-delay: .15s; }
-.vn-thought-dots span:nth-child(3) { animation-delay: .3s; }
-@keyframes vn-think { 0%,100%{opacity:.2; transform:translateY(0)} 50%{opacity:1; transform:translateY(-3px)} }
-.vn-thinking { min-height: 20px; }
-.vn-thinking.typing::after { content: "▌"; color: var(--accent); animation: vn-blink .7s step-end infinite; }
-@keyframes vn-blink { 50% { opacity: 0; } }
+.bd-thinking { padding: 14px 20px; background: var(--ink); color: var(--bg);
+  display: flex; gap: 12px; align-items: flex-start; }
+.bd-thinking-caret { width: 3px; height: 18px; background: var(--accent); flex: none;
+  animation: bd-blink .8s step-end infinite; }
+@keyframes bd-blink { 50% { opacity: 0; } }
+.bd-text { font-family: "JetBrains Mono", monospace; font-size: 12.5px; line-height: 1.6; }
