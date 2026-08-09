@@ -138,3 +138,15 @@ h1.h .acc { color: var(--accent); }
   .backdrop .topo, .backdrop .leaves { opacity: 1; }
   .backdrop .topo { animation: none; }
 }
+
+/* ── L'IA au travail (live) ─────────────────────────────────────────────── */
+.ia-box { border: 1px solid var(--line); padding: 24px 28px; background: var(--surface); }
+.ia-line { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.02em; }
+.ia-line .dot { width: 10px; height: 10px; border-radius: 50%; background: #c99a2e; flex: none; }
+.ia-box.live .ia-line .dot { background: #3fb56b; animation: ia-pulse 2s ease-in-out infinite; }
+@keyframes ia-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+.ia-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 10px;
+  color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+.ia-learned { color: var(--accent); }
+.ia-learn { margin-top: 14px; font-size: 13px; color: var(--muted); font-family: monospace; white-space: pre-wrap; }
