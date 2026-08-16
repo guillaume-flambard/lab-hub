@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memo Labs / Proof, in public.</title>
+<meta name="description" content="Reference homepage for lab.memolabs.dev. Proof, in public.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf9f7;
+    --ink:#16130f;
+    --muted:#6b6055;
+    --line:#e7e2da;
+    --accent:#ad4c16;
+    --accent-soft:#e58a4a;
+    --surface:#ffffff;
+    --live:#3fb56b;
+    --live-ink:#2f7d4f;
+    --amber:oklch(0.72 0.13 75);
+    --amber-ink:oklch(0.46 0.1 60);
+    --lab-ink:oklch(0.45 0.13 45);
+    --live-tint:oklch(0.95 0.05 155 / 0.5);
+    --beta-tint:oklch(0.95 0.06 75 / 0.5);
+    --lab-tint:oklch(0.95 0.05 55 / 0.5);
+    --t1-bg:oklch(0.96 0.02 70);  --t1-ink:oklch(0.55 0.14 45);
+    --t2-bg:oklch(0.965 0.012 90); --t2-ink:oklch(0.40 0.02 55);
+    --t3-bg:oklch(0.97 0.018 95); --t3-ink:oklch(0.55 0.12 55);
+    --t4-bg:oklch(0.96 0.025 150); --t4-ink:oklch(0.48 0.1 152);
+    --t5-bg:oklch(0.955 0.015 80); --t5-ink:oklch(0.42 0.05 40);
+    --font-display:'Oswald','Archivo Narrow',ui-sans-serif,system-ui,sans-serif;
+    --font-mono:'Geist Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+    --maxw:1200px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-display);
+    font-weight:300;
+    font-size:1rem;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:var(--bg)}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  img,svg{display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  .mono{font-family:var(--font-mono)}
+
+  .backdrop{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    opacity:.55;
+  }
+  .backdrop svg{width:100%;height:100%;animation:drift 96s ease-in-out infinite}
+  .hero{
+    position:relative;z-index:1;
+    min-height:86vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:140px 0 96px;
+    overflow:hidden;
+  }
+  .hero-motif{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+  }
+  .hero-motif svg{
+    position:absolute;inset:0;width:100%;height:100%;
+    animation:drift 64s ease-in-out infinite;
+  }
+  .hero-inner{position:relative;z-index:1}
+
+  @keyframes drift{
+    0%,100%{transform:translate(0,0)}
+    50%{transform:translate(-14px,10px)}
+  }
+
+  .zone-tag{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:20px;
+  }
+  .zone-tag::before{content:"";width:28px;height:1px;background:var(--accent)}
+
+  .eyebrow{
+    display:flex;align-items:center;gap:14px;
+    font-family:var(--font-mono);
+    font-size:.8rem;
+    font-weight:500;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:24px;
+  }
+  .eyebrow::before{content:"";width:44px;height:1px;background:var(--accent)}
+
+  .hero-title{
+    font-weight:600;
+    font-size:clamp(2.8rem,7vw,5.4rem);
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+    max-width:12ch;
+  }
+
+  .live-count{
+    display:flex;align-items:center;gap:10px;
+    margin:32px 0 24px;
+    font-family:var(--font-mono);
+    font-size:1.05rem;
+    letter-spacing:.02em;
+  }
+  .live-count .num{font-weight:500;font-size:1.35rem;color:var(--live-ink)}
+  .live-count .when{color:var(--muted);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+  .live-count .when::before{content:"";width:1px;height:12px;background:var(--line);display:inline-block;margin:0 12px 0 2px;vertical-align:middle}
+
+  .dot{
+    position:relative;
+    width:9px;height:9px;border-radius:9999px;
+    background:var(--live);color:var(--live);
+    flex:none;
+  }
+  .dot::after{
+    content:"";position:absolute;inset:0;border-radius:9999px;
+    border:1px solid currentColor;
+    animation:pulse 2.2s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{transform:scale(.55);opacity:.9}
+    75%,100%{transform:scale(2.4);opacity:0}
+  }
+
+  .lede{
+    max-width:56ch;
+    font-size:clamp(1.1rem,1.8vw,1.45rem);
+    font-weight:300;
+    line-height:1.4;
+    color:var(--muted);
+    margin-bottom:40px;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:48px;padding:0 28px;
+    font-family:var(--font-display);
+    font-weight:500;font-size:.95rem;letter-spacing:.09em;
+    text-transform:uppercase;text-decoration:none;
+    border:1px solid transparent;
+    color:var(--bg);
+  }
+  .btn--primary{background:var(--accent);color:var(--bg)}
+  .btn--primary:hover,.btn--primary:focus-visible{background:var(--ink)}
+  .btn--ghost{border-color:var(--ink);color:var(--ink)}
+  .btn--ghost:hover,.btn--ghost:focus-visible{background:var(--ink);color:var(--bg)}
+
+  .zone{padding:120px 0;position:relative;z-index:1}
+  .zone-head{margin-bottom:56px;max-width:640px}
+  .zone-head h2{
+    font-weight:500;
+    font-size:clamp(1.8rem,4vw,2.8rem);
+    text-transform:uppercase;
+    line-height:1.1;
+    margin-bottom:16px;
+  }
+  .zone-head .lede{font-size:clamp(1.05rem,1.6vw,1.3rem);margin-bottom:0}
+  .zone-note{
+    font-family:var(--font-mono);
+    font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);
+    margin-top:14px;
+  }
+
+  .grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;background:var(--line);
+    border:1px solid var(--line);
+  }
+  .card{
+    background:var(--bg);
+    display:flex;flex-direction:column;
+    text-decoration:none;
+    transition:background .2s ease;
+  }
+  .card:hover,.card:focus-within,.card--hovered{background:var(--surface)}
+
+  .monogram{
+    position:relative;aspect-ratio:16/9;overflow:hidden;
+    background:var(--t-bg,var(--t1-bg));
+  }
+  .monogram svg{position:absolute;inset:0;width:100%;height:100%}
+  .monogram text{
+    font-family:var(--font-display);
+    font-weight:600;
+    fill:var(--t-ink,var(--t1-ink));
+    letter-spacing:.02em;
+  }
+
+  .card-body{padding:20px 20px 24px;display:flex;flex-direction:column;flex:1}
+  .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px}
+  .card-title{
+    font-weight:600;font-size:1.4rem;line-height:1.1;text-transform:uppercase;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .card-title .arrow{
+    display:inline-block;margin-left:10px;font-size:1rem;
+    opacity:0;transform:translate(-4px,4px);
+    transition:opacity .2s ease,transform .2s ease;
+    vertical-align:middle;
+  }
+  .card:hover .arrow,.card:focus-within .arrow,.card--hovered .arrow{opacity:1;transform:translate(0,0)}
+  .card-note{
+    color:var(--muted);
+    font-weight:300;line-height:1.4;font-size:1.05rem;
+    margin-bottom:20px;max-width:40ch;
+  }
+  .card-meta{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
+    margin-top:auto;padding-top:20px;border-top:1px solid var(--line);
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{
+    font-family:var(--font-mono);
+    font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);
+    border:1px solid var(--line);
+    padding:4px 9px;
+    white-space:nowrap;
+  }
+  .card-date{
+    font-family:var(--font-mono);
+    font-size:.72rem;letter-spacing:.06em;color:var(--muted);
+    white-space:nowrap;
+  }
+  .card-links{
+    display:flex;gap:18px;
+    margin-top:16px;
+    opacity:0;transform:translateY(4px);
+    transition:opacity .2s ease,transform .2s ease;
+  }
+  .card:hover .card-links,.card:focus-within .card-links,.card--hovered .card-links{opacity:1;transform:translateY(0)}
+  .card-link{
+    font-family:var(--font-mono);
+    font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;
+  }
+  .card-link:hover{color:var(--accent)}
+
+  .badge{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--font-mono);
+    font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+    padding:4px 11px 4px 9px;
+    border-radius:9999px;
+    white-space:nowrap;
+  }
+  .badge-dot{
+    position:relative;width:7px;height:7px;border-radius:9999px;flex:none;
+  }
+  .badge-dot::after{
+    content:"";position:absolute;inset:0;border-radius:9999px;
+    border:1px solid currentColor;
+    animation:pulse 2.2s ease-out infinite;
+  }
+  .badge--live{background:var(--live-tint);color:var(--live-ink)}
+  .badge--live .badge-dot{background:var(--live);color:var(--live)}
+  .badge--beta{background:var(--beta-tint);color:var(--amber-ink)}
+  .badge--beta .badge-dot{background:var(--amber);color:var(--amber)}
+  .badge--lab{background:var(--lab-tint);color:var(--lab-ink)}
+  .badge--lab .badge-dot{background:var(--accent-soft);color:var(--accent-soft)}
+
+  .card--wide{grid-column:1 / -1;flex-direction:row;align-items:stretch}
+  .card--wide .monogram{width:280px;flex:none;aspect-ratio:16/9}
+  .card--wide .card-body{flex:1}
+  .card--wide .card-meta{max-width:560px}
+
+  .anatomy{
+    display:grid;grid-template-columns:minmax(0,540px) minmax(0,1fr);
+    gap:64px;align-items:start;
+  }
+  .anatomy-card-wrap{border:1px solid var(--line);background:var(--surface)}
+  .anatomy-card-wrap .card{background:var(--surface)}
+  .anatomy-list{border-top:1px solid var(--line)}
+  .anatomy-item{
+    display:grid;grid-template-columns:44px 150px 1fr;gap:20px;align-items:baseline;
+    padding:20px 0;border-bottom:1px solid var(--line);
+  }
+  .anatomy-item .idx{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);letter-spacing:.1em}
+  .anatomy-item .name{font-weight:500;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase}
+  .anatomy-item .desc{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);line-height:1.5}
+
+  .mobile-stage{display:flex;gap:64px;align-items:flex-start;justify-content:center}
+  .mobile-frame{
+    width:390px;flex:none;
+    border:1px solid var(--line);background:var(--bg);
+    overflow:hidden;
+  }
+  .mobile-nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:56px;padding:0 18px;
+    border-bottom:1px solid var(--line);
+  }
+  .mobile-nav .brand{font-weight:500;font-size:1rem;letter-spacing:.02em;text-transform:uppercase}
+  .mobile-nav .brand em{font-style:normal;color:var(--accent)}
+  .mobile-nav .menu{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .mobile-hero{position:relative;padding:40px 18px 32px;overflow:hidden}
+  .mobile-motif{position:absolute;top:0;right:0;width:200px;pointer-events:none;opacity:.8}
+  .mobile-hero .eyebrow{font-size:.66rem;margin-bottom:16px}
+  .mobile-hero .hero-title{font-size:2.35rem;line-height:1.05}
+  .mobile-hero .live-count{margin:20px 0 16px;font-size:.9rem}
+  .mobile-hero .live-count .num{font-size:1.1rem}
+  .mobile-hero .lede{font-size:1.02rem;margin-bottom:24px}
+  .mobile-hero .hero-ctas{flex-direction:column}
+  .mobile-hero .btn{width:100%}
+  .mobile-grid{display:flex;flex-direction:column;gap:1px;background:var(--line)}
+  .mobile-grid .card-body{padding:16px 18px 20px}
+  .mobile-grid .card-title{font-size:1.2rem}
+  .mobile-grid .card-note{font-size:.98rem;margin-bottom:16px}
+  .mobile-note{max-width:300px;border-top:1px solid var(--line);padding-top:20px}
+  .mobile-note p{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);line-height:1.6;letter-spacing:.02em;margin-bottom:10px}
+
+  .footer{
+    position:relative;z-index:1;
+    border-top:1px solid var(--line);
+    padding:32px 0 40px;
+  }
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .footer .brand{font-weight:500;font-size:1.1rem;letter-spacing:.02em;text-transform:uppercase}
+  .footer .brand em{font-style:normal;color:var(--accent)}
+  .footer .legal{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+  .nav{
+    position:sticky;top:0;z-index:50;
+    height:72px;background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .nav .brand{font-weight:500;font-size:1.15rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+  .nav .brand em{font-style:normal;color:var(--accent)}
+  .nav-links{display:flex;align-items:center}
+  .nav-links a{
+    display:inline-flex;align-items:center;height:72px;padding:0 18px;
+    font-weight:400;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+    text-decoration:none;color:var(--ink);
+  }
+  .nav-links a + a{border-left:1px solid var(--line)}
+  .nav-links a:hover{color:var(--accent)}
+
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.in{opacity:1;transform:translateY(0)}
+  .js .reveal-d1{transition-delay:.06s}
+  .js .reveal-d2{transition-delay:.12s}
+  .js .reveal-d3{transition-delay:.18s}
+  .js .reveal-d4{transition-delay:.24s}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .backdrop svg,.hero-motif svg,.dot::after,.badge-dot::after{animation:none}
+    .js .reveal{opacity:1;transform:none;transition:none}
+    .card .arrow,.card .card-links{opacity:1;transform:none}
+    .card:hover .card-links,.card .card-links{opacity:1}
+  }
+
+  @media (max-width:900px){
+    .grid{grid-template-columns:1fr}
+    .card--wide{grid-column:auto;flex-direction:column}
+    .card--wide .monogram{width:100%}
+    .anatomy{grid-template-columns:1fr}
+    .mobile-stage{flex-direction:column;align-items:center}
+    .anatomy-item{grid-template-columns:28px 1fr}
+    .anatomy-item .desc{grid-column:2}
+  }
+</style>
+</head>
+<body>
+
+<div class="backdrop" aria-hidden="true">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#e7e2da">
+      <ellipse cx="1180" cy="180" rx="70" ry="46"/>
+      <ellipse cx="1180" cy="180" rx="130" ry="86"/>
+      <ellipse cx="1180" cy="180" rx="190" ry="126"/>
+      <ellipse cx="1180" cy="180" rx="250" ry="166"/>
+      <ellipse cx="1180" cy="180" rx="310" ry="206"/>
+      <ellipse cx="1180" cy="180" rx="370" ry="246"/>
+      <ellipse cx="300" cy="150" rx="40" ry="26" stroke-opacity=".6"/>
+      <ellipse cx="300" cy="150" rx="78" ry="50" stroke-opacity=".6"/>
+      <ellipse cx="300" cy="150" rx="116" ry="74" stroke-opacity=".6"/>
+      <ellipse cx="1250" cy="720" rx="50" ry="34" stroke-opacity=".6"/>
+      <ellipse cx="1250" cy="720" rx="92" ry="60" stroke-opacity=".6"/>
+      <ellipse cx="1250" cy="720" rx="134" ry="88" stroke-opacity=".6"/>
+    </g>
+    <g fill="none" stroke="#6b6055" stroke-opacity=".5" stroke-width="1.2">
+      <path d="M -40 760 C 120 730, 180 640, 300 610 C 420 580, 500 540, 580 520"/>
+      <path d="M 190 645 C 250 610, 300 560, 330 500"/>
+      <path d="M 500 540 C 540 515, 580 490, 620 470"/>
+      <path d="M 580 520 C 630 500, 680 470, 720 440"/>
+      <path d="M 60 700 C 120 680, 180 660, 230 640"/>
+    </g>
+    <g fill="#6b6055">
+      <circle cx="330" cy="500" r="3.5"/>
+      <circle cx="620" cy="470" r="3"/>
+      <circle cx="230" cy="640" r="3"/>
+    </g>
+    <circle cx="720" cy="440" r="4" fill="#e58a4a"/>
+  </svg>
+</div>
+
+<header class="nav" data-od-id="site-nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#hero">Memo <em>Labs</em></a>
+    <nav class="nav-links" aria-label="Page sections">
+      <a href="#workbench">Workbench</a>
+      <a href="#anatomy">Anatomy</a>
+      <a href="#mobile">Mobile</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero" data-od-id="hero">
+    <div class="hero-motif" aria-hidden="true">
+      <svg viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#e7e2da" stroke-opacity=".8">
+          <ellipse cx="1130" cy="260" rx="70" ry="46"/>
+          <ellipse cx="1130" cy="260" rx="130" ry="86"/>
+          <ellipse cx="1130" cy="260" rx="190" ry="126"/>
+          <ellipse cx="1130" cy="260" rx="250" ry="166"/>
+          <ellipse cx="1130" cy="260" rx="310" ry="206"/>
+          <ellipse cx="1130" cy="260" rx="370" ry="246"/>
+          <ellipse cx="300" cy="120" rx="42" ry="28" stroke-opacity=".5"/>
+          <ellipse cx="300" cy="120" rx="82" ry="54" stroke-opacity=".5"/>
+          <ellipse cx="300" cy="120" rx="122" ry="80" stroke-opacity=".5"/>
+          <ellipse cx="180" cy="660" rx="60" ry="40" stroke-opacity=".55"/>
+          <ellipse cx="180" cy="660" rx="110" ry="72" stroke-opacity=".55"/>
+          <ellipse cx="180" cy="660" rx="160" ry="104" stroke-opacity=".55"/>
+          <ellipse cx="1270" cy="680" rx="52" ry="36" stroke-opacity=".5"/>
+          <ellipse cx="1270" cy="680" rx="96" ry="64" stroke-opacity=".5"/>
+          <ellipse cx="1270" cy="680" rx="140" ry="92" stroke-opacity=".5"/>
+        </g>
+        <g fill="none" stroke="#6b6055" stroke-opacity=".6" stroke-width="1.4">
+          <path d="M -60 780 C 120 750, 180 650, 300 615 C 420 580, 500 545, 590 520"/>
+          <path d="M 190 652 C 250 615, 300 565, 335 505"/>
+          <path d="M 505 543 C 545 518, 585 492, 625 472"/>
+          <path d="M 585 520 C 635 500, 685 472, 725 442"/>
+          <path d="M 55 710 C 120 688, 185 665, 235 645"/>
+        </g>
+        <g fill="#6b6055" opacity=".7">
+          <circle cx="335" cy="505" r="3.5"/>
+          <circle cx="625" cy="472" r="3"/>
+          <circle cx="235" cy="645" r="3"/>
+        </g>
+        <circle cx="725" cy="442" r="4.5" fill="#e58a4a"/>
+        <g fill="none" stroke="#e58a4a" stroke-opacity=".7">
+          <ellipse cx="690" cy="240" rx="26" ry="17"/>
+          <ellipse cx="690" cy="240" rx="48" ry="32"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="wrap hero-inner">
+      <div class="zone-tag" data-od-id="zone-hero">01 / Hero</div>
+      <p class="eyebrow">Independent AI engineering lab</p>
+      <h1 class="hero-title" data-od-id="hero-headline">Proof,<br>in public.</h1>
+      <p class="live-count" data-od-id="live-counter">
+        <span class="dot" aria-hidden="true"></span>
+        <span><span class="num" id="countNum">0</span> reachable now</span>
+        <span class="when">As of Aug 16, 2026</span>
+      </p>
+      <p class="lede">Memo Labs builds small AI systems in the open, then keeps them running so you can watch. Projects ship, break, get fixed, and the trace stays visible. Often rough, sometimes useful, always real.</p>
+      <div class="hero-ctas">
+        <a class="btn btn--primary" href="#workbench" data-od-id="cta-primary">See the projects</a>
+        <a class="btn btn--ghost" href="#anatomy" data-od-id="cta-secondary">Read the build notes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="zone" id="workbench" data-od-id="zone-workbench">
+    <div class="wrap">
+      <div class="zone-head reveal">
+        <div class="zone-tag">02 / Workbench</div>
+        <h2>The workbench</h2>
+        <p class="lede">Live systems from the lab, one card each. The badge is the truth: green means it is up right now.</p>
+        <p class="zone-note">Reference build. Project rows are examples from the live stack. Wire real data in the Vite layer.</p>
+      </div>
+
+      <div class="grid" data-od-id="project-grid">
+        <article class="card reveal reveal-d1" data-od-id="project-card-echohub">
+          <div class="monogram" style="--t-bg:var(--t1-bg);--t-ink:var(--t1-ink)">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <g fill="none" stroke="var(--t-ink, #16130f)" stroke-width="1">
+                <ellipse cx="160" cy="90" rx="70" ry="44" stroke-opacity=".6"/>
+                <ellipse cx="160" cy="90" rx="110" ry="70" stroke-opacity=".38"/>
+                <ellipse cx="160" cy="90" rx="150" ry="94" stroke-opacity=".2"/>
+              </g>
+              <text x="160" y="104" text-anchor="middle" font-size="42">EH</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-head">
+              <a class="card-title" href="#anatomy">EchoHub<span class="arrow" aria-hidden="true">&#8599;</span></a>
+              <span class="badge badge--live" data-od-id="badge-echohub"><span class="badge-dot" aria-hidden="true"></span>Live</span>
+            </div>
+            <p class="card-note">Webhooks delivered, with a full trace and no silent drops.</p>
+            <div class="card-meta">
+              <div class="chips">
+                <span class="chip">TypeScript</span>
+                <span class="chip">WebSocket</span>
+                <span class="chip">Postgres</span>
+              </div>
+              <span class="card-date">Aug 14, 2026</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link" href="#workbench" aria-label="EchoHub live app">Live &#8599;</a>
+              <a class="card-link" href="#workbench" aria-label="EchoHub repository">Repo &#8599;</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal reveal-d2" data-od-id="project-card-relay">
+          <div class="monogram" style="--t-bg:var(--t2-bg);--t-ink:var(--t2-ink)">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <g fill="none" stroke="var(--t-ink, #16130f)" stroke-width="1">
+                <ellipse cx="160" cy="90" rx="70" ry="44" stroke-opacity=".6"/>
+                <ellipse cx="160" cy="90" rx="110" ry="70" stroke-opacity=".38"/>
+                <ellipse cx="160" cy="90" rx="150" ry="94" stroke-opacity=".2"/>
+              </g>
+              <text x="160" y="104" text-anchor="middle" font-size="46">R</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-head">
+              <a class="card-title" href="#anatomy">Relay<span class="arrow" aria-hidden="true">&#8599;</span></a>
+              <span class="badge badge--live" data-od-id="badge-relay"><span class="badge-dot" aria-hidden="true"></span>Live</span>
+            </div>
+            <p class="card-note">A durable push channel for apps that outgrew polling.</p>
+            <div class="card-meta">
+              <div class="chips">
+                <span class="chip">Node</span>
+                <span class="chip">Redis</span>
+                <span class="chip">REST</span>
+              </div>
+              <span class="card-date">Aug 12, 2026</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link" href="#workbench" aria-label="Relay live app">Live &#8599;</a>
+              <a class="card-link" href="#workbench" aria-label="Relay repository">Repo &#8599;</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card--hovered reveal reveal-d3" data-od-id="project-card-strayeye">
+          <div class="monogram" style="--t-bg:var(--t3-bg);--t-ink:var(--t3-ink)">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <g fill="none" stroke="var(--t-ink, #16130f)" stroke-width="1">
+                <ellipse cx="160" cy="90" rx="70" ry="44" stroke-opacity=".6"/>
+                <ellipse cx="160" cy="90" rx="110" ry="70" stroke-opacity=".38"/>
+                <ellipse cx="160" cy="90" rx="150" ry="94" stroke-opacity=".2"/>
+              </g>
+              <text x="160" y="104" text-anchor="middle" font-size="42">SE</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-head">
+              <a class="card-title" href="#anatomy">Stray Eye<span class="arrow" aria-hidden="true">&#8599;</span></a>
+              <span class="badge badge--live" data-od-id="badge-strayeye"><span class="badge-dot" aria-hidden="true"></span>Live</span>
+            </div>
+            <p class="card-note">A watchdog over the fleet. Incidents reported, then fixed.</p>
+            <div class="card-meta">
+              <div class="chips">
+                <span class="chip">React</span>
+                <span class="chip">Playwright</span>
+                <span class="chip">Cron</span>
+              </div>
+              <span class="card-date">Aug 09, 2026</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link" href="#workbench" aria-label="Stray Eye live app">Live &#8599;</a>
+              <a class="card-link" href="#workbench" aria-label="Stray Eye repository">Repo &#8599;</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card--wide reveal reveal-d4" data-od-id="project-card-phanganai">
+          <div class="monogram" style="--t-bg:var(--t4-bg);--t-ink:var(--t4-ink)">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <g fill="none" stroke="var(--t-ink, #16130f)" stroke-width="1">
+                <ellipse cx="160" cy="90" rx="70" ry="44" stroke-opacity=".6"/>
+                <ellipse cx="160" cy="90" rx="110" ry="70" stroke-opacity=".38"/>
+                <ellipse cx="160" cy="90" rx="150" ry="94" stroke-opacity=".2"/>
+              </g>
+              <text x="160" y="104" text-anchor="middle" font-size="42">PA</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-head">
+              <a class="card-title" href="#anatomy">Phangan AI<span class="arrow" aria-hidden="true">&#8599;</span></a>
+              <span class="badge badge--beta" data-od-id="badge-phanganai"><span class="badge-dot" aria-hidden="true"></span>Beta</span>
+            </div>
+            <p class="card-note">A tiny RAG concierge that answers from real places and times.</p>
+            <div class="card-meta">
+              <div class="chips">
+                <span class="chip">RAG</span>
+                <span class="chip">Vite</span>
+                <span class="chip">LLM</span>
+              </div>
+              <span class="card-date">Aug 02, 2026</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link" href="#workbench" aria-label="Phangan AI live app">Live &#8599;</a>
+              <a class="card-link" href="#workbench" aria-label="Phangan AI repository">Repo &#8599;</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="zone" id="anatomy" data-od-id="zone-anatomy">
+    <div class="wrap">
+      <div class="zone-head reveal">
+        <div class="zone-tag">03 / Anatomy</div>
+        <h2>Card anatomy</h2>
+        <p class="lede">One card, fully composed. Monogram, signal, meta, status. Reuse this exact structure.</p>
+      </div>
+
+      <div class="anatomy reveal">
+        <div class="anatomy-card-wrap" data-od-id="anatomy-card">
+          <article class="card card--hovered">
+            <div class="monogram" style="--t-bg:var(--t1-bg);--t-ink:var(--t1-ink)">
+              <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <g fill="none" stroke="var(--t-ink, #16130f)" stroke-width="1">
+                  <ellipse cx="160" cy="90" rx="70" ry="44" stroke-opacity=".6"/>
+                  <ellipse cx="160" cy="90" rx="110" ry="70" stroke-opacity=".38"/>
+                  <ellipse cx="160" cy="90" rx="150" ry="94" stroke-opacity=".2"/>
+                </g>
+                <text x="160" y="104" text-anchor="middle" font-size="42">EH</text>
+              </svg>
+            </div>
+            <div class="card-body">
+              <div class="card-head">
+                <a class="card-title" href="#workbench">EchoHub<span class="arrow" aria-hidden="true">&#8599;</span></a>
+                <span class="badge badge--live"><span class="badge-dot" aria-hidden="true"></span>Live</span>
+              </div>
+              <p class="card-note">Webhooks delivered, with a full trace and no silent drops.</p>
+              <div class="card-meta">
+                <div class="chips">
+                  <span class="chip">TypeScript</span>
+                  <span class="chip">WebSocket</span>
+                  <span class="chip">Postgres</span>
+                </div>
+                <span class="card-date">Aug 14, 2026</span>
+              </div>
+              <div class="card-links">
+                <a class="card-link" href="#workbench" aria-label="EchoHub live app">Live &#8599;</a>
+                <a class="card-link" href="#workbench" aria-label="EchoHub repository">Repo &#8599;</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="anatomy-list" data-od-id="anatomy-legend">
+          <div class="anatomy-item">
+            <span class="idx">01</span>
+            <span class="name">Monogram</span>
+            <span class="desc">Initials over concentric rings. Tint pair is deterministic per project. Locked to 16:9.</span>
+          </div>
+          <div class="anatomy-item">
+            <span class="idx">02</span>
+            <span class="name">Signal</span>
+            <span class="desc">Title at Oswald 600. Arrow is hidden until hover or focus, then it shifts in place.</span>
+          </div>
+          <div class="anatomy-item">
+            <span class="idx">03</span>
+            <span class="name">Note</span>
+            <span class="desc">One line on why it matters. Muted, max 40 characters, never marketing voice.</span>
+          </div>
+          <div class="anatomy-item">
+            <span class="idx">04</span>
+            <span class="name">Meta</span>
+            <span class="desc">Tech chips in hairline boxes, mono. Push date sits right, hairline above the row.</span>
+          </div>
+          <div class="anatomy-item">
+            <span class="idx">05</span>
+            <span class="name">Status</span>
+            <span class="desc">Pill badge. Live is a green tint with a pulsing dot. Beta is amber, lab is rust soft.</span>
+          </div>
+          <div class="anatomy-item">
+            <span class="idx">06</span>
+            <span class="name">Links</span>
+            <span class="desc">Live and repo as mono text links. Revealed on hover and on focus, never on touch.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="zone" id="mobile" data-od-id="zone-mobile">
+    <div class="wrap">
+      <div class="zone-head reveal">
+        <div class="zone-tag">04 / Mobile</div>
+        <h2>Mobile</h2>
+        <p class="lede">Single column, same hierarchy. Type scales down, CTAs go full width, no horizontal scroll.</p>
+      </div>
+
+      <div class="mobile-stage reveal">
+        <div class="mobile-frame" data-od-id="mobile-variant">
+          <div class="mobile-nav">
+            <span class="brand">Memo <em>Labs</em></span>
+            <span class="menu">Menu</span>
+          </div>
+          <div class="mobile-hero">
+            <div class="mobile-motif" aria-hidden="true">
+              <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" stroke="#e7e2da" stroke-opacity=".9">
+                  <ellipse cx="150" cy="40" rx="34" ry="22"/>
+                  <ellipse cx="150" cy="40" rx="64" ry="42"/>
+                  <ellipse cx="150" cy="40" rx="94" ry="62"/>
+                </g>
+                <g fill="none" stroke="#6b6055" stroke-opacity=".6" stroke-width="1.2">
+                  <path d="M -10 150 C 40 140, 70 120, 100 110"/>
+                  <path d="M 60 128 C 90 118, 120 100, 140 84"/>
+                </g>
+                <circle cx="140" cy="84" r="3" fill="#e58a4a"/>
+              </svg>
+            </div>
+            <p class="eyebrow">Independent AI lab</p>
+            <h1 class="hero-title">Proof,<br>in public.</h1>
+            <p class="live-count">
+              <span class="dot" aria-hidden="true"></span>
+              <span><span class="num">3</span> reachable now</span>
+            </p>
+            <p class="lede">Small AI systems built in the open. Often rough, sometimes useful, always real.</p>
+            <div class="hero-ctas">
+              <a class="btn btn--primary" href="#workbench">See the projects</a>
+              <a class="btn btn--ghost" href="#anatomy">Read the build notes</a>
+            </div>
+          </div>
+          <div class="mobile-grid" data-od-id="mobile-grid">
+            <article class="card" data-od-id="mobile-card-echohub">
+              <div class="monogram" style="--t-bg:var(--t1-bg);--t-ink:var(--t1-ink)">
+                <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <g fill="none" stroke="var(--t-ink, #16130f)" stroke-width="1">
+                    <ellipse cx="160" cy="90" rx="70" ry="44" stroke-opacity=".6"/>
+                    <ellipse cx="160" cy="90" rx="110" ry="70" stroke-opacity=".38"/>
+                    <ellipse cx="160" cy="90" rx="150" ry="94" stroke-opacity=".2"/>
+                  </g>
+                  <text x="160" y="104" text-anchor="middle" font-size="42">EH</text>
+                </svg>
+              </div>
+              <div class="card-body">
+                <div class="card-head">
+                  <a class="card-title" href="#workbench">EchoHub<span class="arrow" aria-hidden="true">&#8599;</span></a>
+                  <span class="badge badge--live"><span class="badge-dot" aria-hidden="true"></span>Live</span>
+                </div>
+                <p class="card-note">Webhooks delivered, with a full trace.</p>
+                <div class="card-meta">
+                  <div class="chips"><span class="chip">TypeScript</span><span class="chip">Postgres</span></div>
+                  <span class="card-date">Aug 14</span>
+                </div>
+              </div>
+            </article>
+            <article class="card" data-od-id="mobile-card-relay">
+              <div class="monogram" style="--t-bg:var(--t2-bg);--t-ink:var(--t2-ink)">
+                <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <g fill="none" stroke="var(--t-ink, #16130f)" stroke-width="1">
+                    <ellipse cx="160" cy="90" rx="70" ry="44" stroke-opacity=".6"/>
+                    <ellipse cx="160" cy="90" rx="110" ry="70" stroke-opacity=".38"/>
+                    <ellipse cx="160" cy="90" rx="150" ry="94" stroke-opacity=".2"/>
+                  </g>
+                  <text x="160" y="104" text-anchor="middle" font-size="46">R</text>
+                </svg>
+              </div>
+              <div class="card-body">
+                <div class="card-head">
+                  <a class="card-title" href="#workbench">Relay<span class="arrow" aria-hidden="true">&#8599;</span></a>
+                  <span class="badge badge--live"><span class="badge-dot" aria-hidden="true"></span>Live</span>
+                </div>
+                <p class="card-note">A durable push channel for apps that outgrew polling.</p>
+                <div class="card-meta">
+                  <div class="chips"><span class="chip">Node</span><span class="chip">Redis</span></div>
+                  <span class="card-date">Aug 12</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="mobile-note" data-od-id="mobile-notes">
+          <p>Frame width 390 px, single column.</p>
+          <p>Display scales from 5.4rem to 2.35rem. Eyebrow and counter keep the mono layer.</p>
+          <p>CTAs stack full width. Grid separators become 1 px rows between cards.</p>
+          <p>Links stay hidden on touch, so mobile cards show note, meta and badge only.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-od-id="footer">
+  <div class="wrap footer-inner">
+    <span class="brand">Memo <em>Labs</em></span>
+    <span class="legal">Proof, in public. Made with a keyboard. 2026</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var html = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) { html.classList.add('js'); }
+
+  var num = document.getElementById('countNum');
+  if (num) {
+    var target = 3, dur = 1100, start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      num.textContent = Math.round(target * (p * p * (3 - 2 * p)));
+      if (p < 1) { requestAnimationFrame(frame); } else { num.textContent = target; }
+    }
+    if (reduce) { num.textContent = target; } else { requestAnimationFrame(frame); }
+  }
+
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce) {
+    for (var i = 0; i < reveals.length; i++) { reveals[i].classList.add('in'); }
+    return;
+  }
+  if (!('IntersectionObserver' in window)) {
+    for (var j = 0; j < reveals.length; j++) { reveals[j].classList.add('in'); }
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  for (var k = 0; k < reveals.length; k++) { io.observe(reveals[k]); }
+})();
+</script>
+</body>
+</html>

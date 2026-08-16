@@ -23,7 +23,7 @@
     "language": "HTML",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 5,
+    "last_push_days": 4,
     "notes": {
       "fr": "Score de compatibilité et moteur de portage d'apps iOS vers l'iPhone Fold.",
       "en": "Fold-ready score and porting engine for iOS apps on the iPhone Fold."
@@ -68,7 +68,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 7,
+    "last_push_days": 6,
     "notes": {
       "fr": "Un design system personnel, précision et chaleur.",
       "en": "A personal design system: precision and warmth."
@@ -113,7 +113,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 5,
+    "last_push_days": 4,
     "notes": {
       "fr": "Un site vitrine Next.js, sans fioritures.",
       "en": "A Next.js marketing site, no frills."
@@ -308,7 +308,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 5,
+    "last_push_days": 4,
     "notes": {
       "fr": "Refonte du site d'un bar à bières de Montreuil.",
       "en": "Redesign of a Montreuil beer bar's site."

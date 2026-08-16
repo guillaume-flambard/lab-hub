@@ -1,8 +1,10 @@
 # lab-hub
 
 Le playground de Memo Labs, déployé sur [lab.memolabs.dev](https://lab.memolabs.dev).
-Site statique (Vite + TypeScript, sans framework) qui lit `public/projects.json`
-et affiche les projets par statut.
+Site statique (Vite + TypeScript, sans framework) qui lit `public/projects.json` et
+affiche les projets par statut, avec l'identité « preuve vivante » : cartes riches
+(monogramme déterministe, note FR/EN, signal live via la date de push GitHub), compteur
+live, motion décorative (reveal au scroll, micro-interactions, pulse).
 
 ## Commandes
 
@@ -10,8 +12,12 @@ et affiche les projets par statut.
 npm run dev      # serveur de dev (redirige / vers /fr/)
 npm run build    # tsc + vite build -> dist/fr/ et dist/en/
 npm run preview  # sert le build
-npm run refresh  # recopie ../lab-infra/docs/projects.json dans public/
+npm run refresh  # recopie ../lab-infra/docs/projects.public.json dans public/
 ```
+
+Le référentiel est généré par `lab-infra/scripts/audit-repos.py` : notes FR/EN curées
+dans `lab-infra/docs/lab-notes.json`, date de push GitHub ajoutée au build. lab-hub est
+un consommateur en lecture seule du fichier public (jamais le référentiel privé).
 
 ## Bilingue FR / EN
 
@@ -32,8 +38,14 @@ Pour ajouter ou changer une chaîne : la déclarer dans l'interface `Dict` de `s
 la remplir dans les deux dictionnaires, puis l'utiliser soit via `{{clé}}` dans le template
 (en l'ajoutant à `values()` dans `vite.config.ts`), soit via `t()` dans `main.ts`.
 
-Les descriptions de `projects.json` restent dans leur langue d'origine : ce sont les
-descriptions des repos GitHub, elles ne viennent pas d'ici.
+Les notes « why it matters » viennent de `projects.json` (champ `notes`, FR/EN curées) ;
+le champ `description` vient des repos GitHub, il n'est pas traduit.
+
+## Design
+
+Le contrat visuel : `_bmad-output/planning-artifacts/ux-designs/ux-lab-hub-2026-08-16/DESIGN.md`
+(et `EXPERIENCE.md` pour les comportements). Maquette de référence Open Design +
+captures dans `design/` (`lab-homepage-reference.html`, `preview-en*.png`).
 
 ## Déploiement
 
