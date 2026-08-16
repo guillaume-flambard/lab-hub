@@ -45,7 +45,6 @@ function values(locale: Locale): Record<string, string> {
       "{portfolioLink}",
       `<a class="txtlink" href="${site}/work">portfolio</a>`
     ),
-    howToRead: d.howToRead,
     btnLive: d.btnLive,
     btnLab: d.btnLab,
     legal: d.legal,

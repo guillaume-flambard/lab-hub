@@ -25,8 +25,6 @@ export interface Dict {
   h1: string;
   h1accent: string;
   lede: string;
-  liveNow: (n: number) => string;
-  howToRead: string;
   btnLive: string;
   btnLab: string;
   // footer
@@ -41,10 +39,6 @@ export interface Dict {
   // cartes
   descFallback: string;
   loadError: (msg: string) => string;
-  lastPush: (days: number) => string;
-  noSignal: string;
-  openLive: string;
-  openRepo: string;
   status: Record<string, string>;
   statusFallback: string;
 }
@@ -60,28 +54,21 @@ const fr: Dict = {
   navAbout: "À propos",
   navContact: "Contact",
   eyebrow: "Memo Labs · Le lab",
-  h1: "La preuve,",
-  h1accent: "en public.",
+  h1: "Un terrain",
+  h1accent: "de jeu.",
   lede:
-    "Le lab, c'est là où Memo Labs livre de l'IA réelle : agents, outils, prototypes. Déployés, joignables, bruts mais vrais. Les produits finis vivent sur le {portfolioLink}.",
-  liveNow: (n) => `${n} joignables maintenant`,
-  howToRead: "Chaque carte s'ouvre en direct. Le brut est voulu.",
+    "Le lab, c'est là où vivent les expérimentations de Memo Labs : prototypes d'agents IA, outils, scripts et POCs. Souvent bruts, parfois utiles, toujours réels. Les produits finis sont sur le {portfolioLink}.",
   btnLive: "En ligne",
   btnLab: "Le lab",
   legal: "Mentions légales",
   liveTitle: "En ligne",
-  liveLede: (n) => `Déployés et joignables aujourd'hui, ${n} au total.`,
+  liveLede: (n) => `Les produits Memo Labs déployés et accessibles, ${n} au total.`,
   labTitle: "Le lab",
-  labLede: (n) => `En cours, ouvert pendant qu'il se construit : ${n} prototypes, agents et outils.`,
+  labLede: (n) => `Les expérimentations en cours : ${n} prototypes, agents et outils.`,
   explTitle: "Explorations",
-  explLede: "Des pistes explorées, en pause ou fermées. Le travail continue.",
+  explLede: "Des pistes explorées, en pause ou en beta. Le travail continue.",
   descFallback: "Expérimentation dans le lab Memo Labs.",
   loadError: (msg) => `Impossible de charger les projets : ${msg}`,
-  lastPush: (d) =>
-    d === 0 ? "poussé aujourd'hui" : d === 1 ? "hier" : `il y a ${d} j`,
-  noSignal: "aucun signal",
-  openLive: "En direct",
-  openRepo: "Code",
   status: {
     live: "En ligne",
     beta: "Beta",
@@ -104,28 +91,21 @@ const en: Dict = {
   navAbout: "About",
   navContact: "Contact",
   eyebrow: "Memo Labs · The lab",
-  h1: "Proof,",
-  h1accent: "in public.",
+  h1: "A",
+  h1accent: "playground.",
   lede:
-    "The lab is where Memo Labs ships real AI: agents, tools, prototypes. Deployed, reachable, rough but real. The finished products live on the {portfolioLink}.",
-  liveNow: (n) => `${n} reachable now`,
-  howToRead: "Every card opens live. Rough is intended.",
+    "The lab is where Memo Labs experiments live: AI agent prototypes, tools, scripts and POCs. Often rough, sometimes useful, always real. The finished products sit on the {portfolioLink}.",
   btnLive: "Live",
   btnLab: "The lab",
   legal: "Legal notice",
   liveTitle: "Live",
-  liveLede: (n) => `Deployed and reachable today, ${n} in total.`,
+  liveLede: (n) => `Memo Labs products deployed and reachable, ${n} in total.`,
   labTitle: "The lab",
-  labLede: (n) => `In progress, opened while being built: ${n} prototypes, agents and tools.`,
+  labLede: (n) => `Work in progress: ${n} prototypes, agents and tools.`,
   explTitle: "Explorations",
-  explLede: "Paths explored, parked or closed. The work goes on.",
+  explLede: "Paths explored, paused or in beta. The work goes on.",
   descFallback: "An experiment in the Memo Labs lab.",
   loadError: (msg) => `Could not load the projects: ${msg}`,
-  lastPush: (d) =>
-    d === 0 ? "pushed today" : d === 1 ? "yesterday" : `${d}d ago`,
-  noSignal: "no signal",
-  openLive: "Live",
-  openRepo: "Source",
   status: {
     live: "Live",
     beta: "Beta",
