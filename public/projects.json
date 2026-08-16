@@ -7,7 +7,12 @@
     "description": "Fluxa - raw WebGL2 fluid design system",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 7,
+    "notes": {
+      "fr": "Un design system fluide en WebGL2 brut, pour le plaisir du rendu.",
+      "en": "A raw WebGL2 fluid design system, for the joy of the render."
+    }
   },
   {
     "name": "foldready",
@@ -17,7 +22,12 @@
     "description": "Fold-Ready Score + porting engine for iOS apps on the iPhone Fold (iOS 27). Swift CLI + Next.js web.",
     "language": "HTML",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 5,
+    "notes": {
+      "fr": "Score de compatibilité et moteur de portage d'apps iOS vers l'iPhone Fold.",
+      "en": "Fold-ready score and porting engine for iOS apps on the iPhone Fold."
+    }
   },
   {
     "name": "knockport",
@@ -27,7 +37,12 @@
     "description": "A hiring journey you type into. Candidates explore the company in a terminal before they apply, and recruiters get evidence instead of a score.",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 7,
+    "notes": {
+      "fr": "Un process de recrutement qu'on tape au clavier, terminal avant l'entretien.",
+      "en": "A hiring journey you type into, terminal before the interview."
+    }
   },
   {
     "name": "lab-hub",
@@ -37,7 +52,12 @@
     "description": "",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 0,
+    "notes": {
+      "fr": "Cette page, justement : le carnet de bord du lab.",
+      "en": "This very page: the lab's logbook."
+    }
   },
   {
     "name": "memo-ui",
@@ -47,7 +67,12 @@
     "description": "Personal design system with soul: precision + warmth (React, Tailwind v4, Storybook, Vitest)",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 7,
+    "notes": {
+      "fr": "Un design system personnel, précision et chaleur.",
+      "en": "A personal design system: precision and warmth."
+    }
   },
   {
     "name": "ops-autopilot",
@@ -57,7 +82,12 @@
     "description": "Automation ROI analyst: ingest brand ops, score time/money, recommend what to automate first, human-reviewed report. Bilingual FR/EN.",
     "language": "Python",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 7,
+    "notes": {
+      "fr": "Un analyste de ROI d'automatisation, bilingue FR/EN.",
+      "en": "An automation ROI analyst, bilingual."
+    }
   },
   {
     "name": "paykit",
@@ -67,7 +97,12 @@
     "description": "PayKit — drop-in credits, usage metering & subscriptions for AI apps",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 7,
+    "notes": {
+      "fr": "Crédits, métrage d'usage et abonnements prêts à brancher.",
+      "en": "Drop-in credits, usage metering and subscriptions."
+    }
   },
   {
     "name": "perfect-london-massage",
@@ -77,7 +112,12 @@
     "description": "Perfect London Massage — Next.js marketing site + therapist console, SEO/GEO-ready",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 5,
+    "notes": {
+      "fr": "Un site vitrine Next.js, sans fioritures.",
+      "en": "A Next.js marketing site, no frills."
+    }
   },
   {
     "name": "portfolio",
@@ -87,7 +127,12 @@
     "description": "",
     "language": "Python",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 0,
+    "notes": {
+      "fr": "Le portfolio Memo Labs, point d'entrée du site.",
+      "en": "The Memo Labs portfolio, entry point of the site."
+    }
   },
   {
     "name": "weave",
@@ -97,7 +142,12 @@
     "description": "Cognitive Runtime (prototype MVP) — shared team memory that makes reusable skills emerge from activity, with per-layer provenance (perso→org). Rust, Postgres/pgvector, MCP.",
     "language": "Rust",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 6,
+    "notes": {
+      "fr": "Mémoire d'équipe partagée, prototype de runtime cognitif.",
+      "en": "Shared team memory, cognitive runtime prototype."
+    }
   },
   {
     "name": "accordo",
@@ -107,7 +157,12 @@
     "description": "Accordo: a contract negotiation assistant. Next.js 15 and TypeScript.",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 191,
+    "notes": {
+      "fr": "Un assistant de négociation de contrats.",
+      "en": "A contract negotiation assistant."
+    }
   },
   {
     "name": "activity-server",
@@ -117,7 +172,12 @@
     "description": "",
     "language": "JavaScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 6,
+    "notes": {
+      "fr": "Le worker d'activité du lab, quand il reprend du service.",
+      "en": "The lab's activity worker, once it's back up."
+    }
   },
   {
     "name": "agentdex",
@@ -127,7 +187,12 @@
     "description": "Web app where you own AI agents as collectible cards: usable on real tasks, personal to you, and evolving over time. Next.js + Prisma.",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 17,
+    "notes": {
+      "fr": "Des agents IA collectionnables, chacun utilisable.",
+      "en": "Own AI agents as collectible, usable cards."
+    }
   },
   {
     "name": "agents_liminals",
@@ -137,7 +202,12 @@
     "description": "Agents Liminals: an AI-guided spiritual and psychological consultation platform. Next.js 15.",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 8,
+    "notes": {
+      "fr": "Un compagnon IA pour la réflexion personnelle.",
+      "en": "An AI-guided companion for personal reflection."
+    }
   },
   {
     "name": "aperto",
@@ -147,7 +217,12 @@
     "description": "Universal project orchestrator CLI: analyze, test, and develop across any stack, with AI-assisted test generation and code analysis.",
     "language": "JavaScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 165,
+    "notes": {
+      "fr": "Un CLI pour analyser, tester et développer n'importe quel projet.",
+      "en": "A CLI to analyze, test and develop any project."
+    }
   },
   {
     "name": "browser-router",
@@ -157,7 +232,12 @@
     "description": "Native macOS menubar app that routes URLs between browsers: local dev URLs open in Chrome, everything else in Safari. Swift.",
     "language": "Swift",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 43,
+    "notes": {
+      "fr": "Un routeur d'URL macOS : chaque navigateur à sa place.",
+      "en": "A macOS menubar app that routes URLs between browsers."
+    }
   },
   {
     "name": "ctaio-radar",
@@ -167,7 +247,12 @@
     "description": "Four-step agentic pipeline: real release notes to a publish-ready editorial brief for ctaio.dev. Built for the WTF Sr Agentic Engineer assessment.",
     "language": "JavaScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 1,
+    "notes": {
+      "fr": "Un pipeline agentique qui lit, trie et publie les notes de release.",
+      "en": "An agentic pipeline that reads, ranks and publishes release notes."
+    }
   },
   {
     "name": "featurebase-feedback-analyzer",
@@ -177,7 +262,12 @@
     "description": "Analyze a Featurebase public feedback board: theme clustering + demand prioritization, output a founder-ready Markdown report.",
     "language": "Python",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 8,
+    "notes": {
+      "fr": "Un analyseur de retours Featurebase, thèmes groupés.",
+      "en": "Theme-clustered analysis of a Featurebase feedback board."
+    }
   },
   {
     "name": "island-code",
@@ -187,7 +277,12 @@
     "description": "Island Code for Locals: learn to build websites and use AI, for the people of Koh Phangan.",
     "language": "CSS",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 191,
+    "notes": {
+      "fr": "Apprendre à construire des sites et à utiliser l'IA, pour les locaux.",
+      "en": "Learn to build websites and use AI, for locals."
+    }
   },
   {
     "name": "keelwork",
@@ -197,7 +292,12 @@
     "description": "A BMAD module for the situation where the vision belongs to someone else. Captures intent, gates it, then builds.",
     "language": null,
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 0,
+    "notes": {
+      "fr": "Un module BMAD pour les visions qui appartiennent à un autre.",
+      "en": "A BMAD module for when the vision belongs to someone else."
+    }
   },
   {
     "name": "leclebard.fr",
@@ -207,7 +307,12 @@
     "description": "Refonte du site Le Clébard (bar à bières, Montreuil) — Next.js 16 + design system Open Design",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 5,
+    "notes": {
+      "fr": "Refonte du site d'un bar à bières de Montreuil.",
+      "en": "Redesign of a Montreuil beer bar's site."
+    }
   },
   {
     "name": "mama-moon-restaurant",
@@ -217,7 +322,12 @@
     "description": "Mama Homemade Restaurant - Authentic Thai cuisine website",
     "language": "Svelte",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 284,
+    "notes": {
+      "fr": "Un site pour un restaurant thaï authentique.",
+      "en": "A site for an authentic Thai restaurant."
+    }
   },
   {
     "name": "mastra-feedback-agent",
@@ -227,7 +337,12 @@
     "description": "Mastra agent that reads a product feedback board and tells a founder what to build next. Runs fully on a local LLM (Ollama) — no API key.",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 8,
+    "notes": {
+      "fr": "Un agent Mastra qui lit un tableau de retours et dit ce qui compte.",
+      "en": "A Mastra agent that reads a feedback board and tells you what matters."
+    }
   },
   {
     "name": "memo-cc",
@@ -237,7 +352,12 @@
     "description": "Guillaume's Claude Code plugin: vault-enrich and new-project skills, plus personal-archivist and vault-librarian agents.",
     "language": "Shell",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 18,
+    "notes": {
+      "fr": "Un plugin Claude Code maison : vault-enrich, new-project.",
+      "en": "A homegrown Claude Code plugin: vault-enrich, new-project."
+    }
   },
   {
     "name": "mojolink-site",
@@ -247,7 +367,12 @@
     "description": "",
     "language": "HTML",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 191,
+    "notes": {
+      "fr": "Un site vitrine, à prendre comme il vient.",
+      "en": "A marketing site, taken as it comes."
+    }
   },
   {
     "name": "moon-family",
@@ -257,7 +382,12 @@
     "description": "Three independent websites for Moon Family: Mama Homemade, Moon Spoon, and Moonland Bar in Haad Rin, Koh Phangan",
     "language": "Svelte",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 191,
+    "notes": {
+      "fr": "Trois sites pour une famille de restaurants thaïs.",
+      "en": "Three sites for a family of Thai restaurants."
+    }
   },
   {
     "name": "n8n-community-leverage",
@@ -267,7 +397,12 @@
     "description": "Ranks the open n8n backlog by leverage (severity, reach, recency), clusters it into themes, and turns the top ones into contributor-ready briefs. Runs as n8n workflows with a local LLM.",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 23,
+    "notes": {
+      "fr": "Un classement du backlog n8n par levier d'impact.",
+      "en": "Ranks the open n8n backlog by leverage."
+    }
   },
   {
     "name": "n8n-community-toolkit",
@@ -277,7 +412,12 @@
     "description": "Six read-only tools for the n8n community backlog: leverage-based issue triage measured against n8n's own labelling, a PR preflight that reads n8n's contribution rules at run time, a contribution gate, a reproduction sandbox, an execution health monitor, and a node schema differ.",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 22,
+    "notes": {
+      "fr": "Six outils en lecture seule pour la communauté n8n.",
+      "en": "Six read-only tools for the n8n community."
+    }
   },
   {
     "name": "nope",
@@ -287,7 +427,12 @@
     "description": "Open-source AI that calls companies so you don't have to. Cancel, negotiate, complain — hands free.",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 6,
+    "notes": {
+      "fr": "Une IA open source qui appelle les entreprises pour vous.",
+      "en": "Open-source AI that calls companies so you don't have to."
+    }
   },
   {
     "name": "oss-miner",
@@ -297,7 +442,12 @@
     "description": "Mine GitHub for contributable issues across watched repos, auto-vet them against a 5-gate method, and score on employer leverage, AI/MCP ecosystem, and personal use.",
     "language": "JavaScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 7,
+    "notes": {
+      "fr": "Un mineur de issues GitHub contribuables.",
+      "en": "Mine GitHub for contributable issues."
+    }
   },
   {
     "name": "sku-regulator",
@@ -307,7 +457,12 @@
     "description": "From a stubborn EU portal to compliant, multi-country product data. EU health-claims register → Postgres/pgvector → hybrid RAG → compliance dashboard.",
     "language": "Python",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 8,
+    "notes": {
+      "fr": "D'un portail EU récalcitrant à des fiches produits conformes et multilingues.",
+      "en": "From a stubborn EU portal to compliant, multi-country product listings."
+    }
   },
   {
     "name": "straysafe",
@@ -317,7 +472,12 @@
     "description": "StraySafe: mobile-first collaborative app to monitor, manage, and protect stray or fostered dogs in a region.",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 191,
+    "notes": {
+      "fr": "Une app collaborative pour surveiller et aider les animaux errants.",
+      "en": "A mobile-first app to monitor and help stray animals."
+    }
   },
   {
     "name": "sun-chasers",
@@ -327,7 +487,12 @@
     "description": "",
     "language": "HTML",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 191,
+    "notes": {
+      "fr": "Un projet pensé pour les chasseurs de soleil.",
+      "en": "A project made for the sun chasers."
+    }
   },
   {
     "name": "th-comissions",
@@ -337,7 +502,12 @@
     "description": "Trackly: B2B commission tracking for Thailand's tourism sector, with a Capacitor mobile app.",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 7,
+    "notes": {
+      "fr": "Trackly : suivi de commissions B2B pour le tourisme thaïlandais.",
+      "en": "Trackly: B2B commission tracking for Thailand's tourism sector."
+    }
   },
   {
     "name": "th-compliance-app",
@@ -347,7 +517,12 @@
     "description": "",
     "language": "TypeScript",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 191,
+    "notes": {
+      "fr": "Une app de conformité, terrain thaïlandais.",
+      "en": "A compliance app for the Thai field."
+    }
   },
   {
     "name": "uni",
@@ -357,7 +532,12 @@
     "description": "UNI - Universal Neural Interface for Production-Grade LLM Systems",
     "language": "Python",
     "lab_candidate": true,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 165,
+    "notes": {
+      "fr": "Une interface neurale universelle pour des systèmes LLM en production.",
+      "en": "A universal neural interface for production LLM systems."
+    }
   },
   {
     "name": "echohub",
@@ -367,7 +547,12 @@
     "description": "Unified hub for managing your apps through AI conversations with Minerva. Laravel + Inertia/React.",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 7,
+    "notes": {
+      "fr": "Un hub unifié : gérer ses apps en discutant.",
+      "en": "Manage your apps through AI conversations."
+    }
   },
   {
     "name": "largo-ai",
@@ -377,7 +562,12 @@
     "description": "Largo IA: French generative-AI training for small and mid-size businesses. 100% remote, jargon-free, AI-Act and GDPR aware. Marketing site in Next.js.",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 8,
+    "notes": {
+      "fr": "Formation IA générative en français pour les PME.",
+      "en": "French generative-AI training for small and mid-size companies."
+    }
   },
   {
     "name": "n8n-node-vetter",
@@ -387,7 +577,12 @@
     "description": "Vet an n8n community node against the verified-node standards and get a severity-ranked review. Zero runtime deps, CI, ships its own AI review layer.",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 20,
+    "notes": {
+      "fr": "Vérifier un node n8n contre le standard verified.",
+      "en": "Vet an n8n community node against the verified-node standard."
+    }
   },
   {
     "name": "n8n-nodes-opn",
@@ -397,7 +592,12 @@
     "description": "n8n community node for Opn Payments (formerly Omise): charges, refunds, customers, and a webhook trigger that re-fetches each event before emitting, since Opn webhooks are unsigned. No runtime dependencies.",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 7,
+    "notes": {
+      "fr": "Un node n8n pour Opn Payments : charges et remboursements.",
+      "en": "An n8n node for Opn Payments: charges and refunds."
+    }
   },
   {
     "name": "phanganai-v2",
@@ -407,7 +607,12 @@
     "description": "PhanganAI: a Neon Jungle booking and events app for Koh Phangan. Next.js + Capacitor mobile + Supabase.",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 8,
+    "notes": {
+      "fr": "Une app de réservation et d'événements pour Koh Phangan.",
+      "en": "A booking and events app for Koh Phangan."
+    }
   },
   {
     "name": "stasis",
@@ -417,6 +622,11 @@
     "description": "Multi-project scoring and sprint orchestrator: an anti-scatter meta-layer that scores your projects, tells you which one to commit to, and holds you to it. TypeScript CLI + desktop app.",
     "language": "TypeScript",
     "lab_candidate": false,
-    "visibility": "PUBLIC"
+    "visibility": "PUBLIC",
+    "last_push_days": 8,
+    "notes": {
+      "fr": "Un orchestrateur de sprints anti-éparpillement.",
+      "en": "An anti-scatter sprint orchestrator."
+    }
   }
 ]
