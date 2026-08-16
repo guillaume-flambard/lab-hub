@@ -2,8 +2,7 @@
 
 Le playground de Memo Labs, déployé sur [lab.memolabs.dev](https://lab.memolabs.dev).
 Site statique (Vite + TypeScript, sans framework) qui lit `public/projects.json`
-et affiche les projets par statut, plus une scène animée branchée sur le worker
-d'activité (`https://activity.memolabs.dev`).
+et affiche les projets par statut.
 
 ## Commandes
 
@@ -31,11 +30,10 @@ Le mécanisme tient en quatre fichiers :
 
 Pour ajouter ou changer une chaîne : la déclarer dans l'interface `Dict` de `src/i18n.ts`,
 la remplir dans les deux dictionnaires, puis l'utiliser soit via `{{clé}}` dans le template
-(en l'ajoutant à `values()` dans `vite.config.ts`), soit via `t()` dans `main.ts` / `scene.ts`.
+(en l'ajoutant à `values()` dans `vite.config.ts`), soit via `t()` dans `main.ts`.
 
-Deux sources de texte restent dans leur langue d'origine, parce qu'elles viennent d'ailleurs :
-les descriptions de `projects.json` (descriptions des repos GitHub) et le champ `detail`
-renvoyé par le worker d'activité.
+Les descriptions de `projects.json` restent dans leur langue d'origine : ce sont les
+descriptions des repos GitHub, elles ne viennent pas d'ici.
 
 ## Déploiement
 

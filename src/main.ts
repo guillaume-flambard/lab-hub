@@ -1,6 +1,5 @@
 import { t } from "./i18n";
 import { loadProjects, type Project } from "./projects";
-import { renderScene } from "./scene";
 import "./style.css";
 
 const TINTS = ["t1", "t2", "t3", "t4", "t5"];
@@ -76,40 +75,10 @@ async function main() {
   ).slice(0, 12);
 
   root.innerHTML =
-    sceneSection() +
     section("live", d.liveTitle, d.liveLede(live.length), live) +
     section("lab", d.labTitle, d.labLede(lab.length), lab) +
     section("explorations", d.explTitle, d.explLede, explorations);
 
-  const sceneEl = document.getElementById("ia-scene");
-  if (sceneEl) {
-    // les repos visités par le worker d'abord (ordre de voyage réel), puis le reste
-    const workerOrder = ["lab-infra", "weave", "ops-autopilot", "knockport", "fluxa", "memo-ui", "lab-hub"];
-    const all: { name: string; status: string }[] = live.concat(lab);
-    const merged: { name: string; status: string }[] = [...all];
-    for (const w of workerOrder) {
-      if (!merged.some((p) => p.name === w)) merged.push({ name: w, status: "lab" });
-    }
-    const sorted = workerOrder
-      .map((n) => merged.find((p) => p.name === n))
-      .filter(Boolean)
-      .concat(merged.filter((p) => !workerOrder.includes(p.name)));
-    renderScene(sceneEl, sorted.map((p) => ({ name: p!.name, status: p!.status })));
-  }
-}
-
-function sceneSection(): string {
-  const d = t();
-  return `
-  <section id="ia" class="sec ia">
-    <div class="wrap">
-      <div class="shead">
-        <h2>${d.iaTitle} <span class="acc">${d.iaTitleAccent}</span></h2>
-        <p>${d.iaLede}</p>
-      </div>
-      <div id="ia-scene"></div>
-    </div>
-  </section>`;
 }
 
 main();

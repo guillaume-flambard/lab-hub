@@ -1,6 +1,6 @@
 // Dictionnaires FR/EN du lab. Utilisés à deux endroits :
 //  - au build, par le plugin vite qui rend page.template.html en /fr/ et /en/
-//  - au runtime, par main.ts et scene.ts (locale lue sur <html lang>)
+//  - au runtime, par main.ts (locale lue sur <html lang>)
 // Le portfolio (memolabs.dev) utilise next-intl avec les mêmes locales.
 
 export const LOCALES = ["fr", "en"] as const;
@@ -36,20 +36,11 @@ export interface Dict {
   labLede: (n: number) => string;
   explTitle: string;
   explLede: string;
-  iaTitle: string;
-  iaTitleAccent: string;
-  iaLede: string;
   // cartes
   descFallback: string;
   loadError: (msg: string) => string;
   status: Record<string, string>;
   statusFallback: string;
-  // scène agent
-  sceneConnecting: string;
-  sceneLearned: (n: number) => string;
-  sceneCycle: string;
-  sceneOn: (repo: string) => string;
-  sceneOffline: string;
 }
 
 const fr: Dict = {
@@ -76,10 +67,6 @@ const fr: Dict = {
   labLede: (n) => `Les expérimentations en cours : ${n} prototypes, agents et outils.`,
   explTitle: "Explorations",
   explLede: "Des pistes explorées, en pause ou en beta. Le travail continue.",
-  iaTitle: "L'IA",
-  iaTitleAccent: "au travail",
-  iaLede:
-    "Un agent surveille les repos du lab : il se déplace de projet en projet et réfléchit en direct.",
   descFallback: "Expérimentation dans le lab Memo Labs.",
   loadError: (msg) => `Impossible de charger les projets : ${msg}`,
   status: {
@@ -91,11 +78,6 @@ const fr: Dict = {
     archived: "Archivé",
   },
   statusFallback: "WIP",
-  sceneConnecting: "connexion…",
-  sceneLearned: (n) => `${n} patterns appris`,
-  sceneCycle: "cycle en cours",
-  sceneOn: (repo) => `sur ${repo}`,
-  sceneOffline: "agent hors ligne",
 };
 
 const en: Dict = {
@@ -122,10 +104,6 @@ const en: Dict = {
   labLede: (n) => `Work in progress: ${n} prototypes, agents and tools.`,
   explTitle: "Explorations",
   explLede: "Paths explored, paused or in beta. The work goes on.",
-  iaTitle: "AI",
-  iaTitleAccent: "at work",
-  iaLede:
-    "An agent watches the lab repos: it moves from project to project and thinks out loud, live.",
   descFallback: "An experiment in the Memo Labs lab.",
   loadError: (msg) => `Could not load the projects: ${msg}`,
   status: {
@@ -137,11 +115,6 @@ const en: Dict = {
     archived: "Archived",
   },
   statusFallback: "WIP",
-  sceneConnecting: "connecting…",
-  sceneLearned: (n) => `${n} patterns learned`,
-  sceneCycle: "cycle running",
-  sceneOn: (repo) => `on ${repo}`,
-  sceneOffline: "agent offline",
 };
 
 export const DICTS: Record<Locale, Dict> = { fr, en };
