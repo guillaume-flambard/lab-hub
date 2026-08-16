@@ -200,16 +200,6 @@
     "visibility": "PUBLIC"
   },
   {
-    "name": "lab-infra",
-    "status": "lab",
-    "url": null,
-    "repo": "https://github.com/guillaume-flambard/lab-infra",
-    "description": "Memo Labs personal VPS lab - Coolify + GitHub Actions infra",
-    "language": "Python",
-    "lab_candidate": true,
-    "visibility": "PUBLIC"
-  },
-  {
     "name": "leclebard.fr",
     "status": "lab",
     "url": null,
