@@ -1,17 +1,9 @@
+import { t } from "./i18n";
 import { loadProjects, type Project } from "./projects";
 import { renderScene } from "./scene";
 import "./style.css";
 
 const TINTS = ["t1", "t2", "t3", "t4", "t5"];
-
-const STATUS_LABEL: Record<string, string> = {
-  live: "En ligne",
-  beta: "Beta",
-  lab: "WIP",
-  internal: "Interne",
-  private: "Privé",
-  archived: "Archivé",
-};
 
 function tint(name: string): string {
   const sum = [...name].reduce((a, c) => a + c.charCodeAt(0), 0);
@@ -19,15 +11,17 @@ function tint(name: string): string {
 }
 
 function badge(p: Project): string {
-  const label = STATUS_LABEL[p.status] ?? "WIP";
+  const d = t();
+  const label = d.status[p.status] ?? d.statusFallback;
   const cls = p.status === "live" ? "b-live" : p.status === "beta" ? "b-beta" : "b-lab";
   return `<span class="badge ${cls}">${label}</span>`;
 }
 
 function cleanDesc(p: Project): string {
+  // les descriptions viennent de projects.json (GitHub), elles ne sont pas traduites
   return p.description && p.description !== "projet local (pas de repo GitHub)"
     ? p.description
-    : "Expérimentation dans le lab Memo Labs.";
+    : t().descFallback;
 }
 
 function card(p: Project): string {
@@ -65,11 +59,13 @@ async function main() {
   const root = document.getElementById("content");
   if (!root) return;
 
+  const d = t();
+
   let projects: Project[];
   try {
     projects = await loadProjects();
   } catch (e) {
-    root.innerHTML = `<div class="wrap"><p class="err">Impossible de charger les projets : ${(e as Error).message}</p></div>`;
+    root.innerHTML = `<div class="wrap"><p class="err">${d.loadError((e as Error).message)}</p></div>`;
     return;
   }
 
@@ -81,9 +77,9 @@ async function main() {
 
   root.innerHTML =
     sceneSection() +
-    section("live", "En ligne", `Les produits Memo Labs déployés et accessibles — ${live.length} au total.`, live) +
-    section("lab", "Le lab", `Les expérimentations en cours — ${lab.length} prototypes, agents et outils.`, lab) +
-    section("explorations", "Explorations", "Des pistes explorées, en pause ou en beta — le travail continue.", explorations);
+    section("live", d.liveTitle, d.liveLede(live.length), live) +
+    section("lab", d.labTitle, d.labLede(lab.length), lab) +
+    section("explorations", d.explTitle, d.explLede, explorations);
 
   const sceneEl = document.getElementById("ia-scene");
   if (sceneEl) {
@@ -103,12 +99,13 @@ async function main() {
 }
 
 function sceneSection(): string {
+  const d = t();
   return `
   <section id="ia" class="sec ia">
     <div class="wrap">
       <div class="shead">
-        <h2>L'IA <span class="acc">au travail</span></h2>
-        <p>Un agent surveille les repos du lab — il se déplace de projet en projet et réfléchit en direct.</p>
+        <h2>${d.iaTitle} <span class="acc">${d.iaTitleAccent}</span></h2>
+        <p>${d.iaLede}</p>
       </div>
       <div id="ia-scene"></div>
     </div>

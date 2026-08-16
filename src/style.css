@@ -59,7 +59,11 @@ a { color: inherit; }
 .navright a { text-decoration: none; color: var(--muted); padding: 0 18px; transition: color 0.2s; }
 .navright a + a { border-left: 1px solid var(--line); }
 .navright a:hover, .navright a.on { color: var(--accent); }
-@media (max-width: 640px) { .navright { font-size: 12px; gap: 4px; } .navright a { padding: 0 10px; } }
+.navright .lang { display: inline-flex; align-items: center; gap: 6px; padding-left: 18px;
+  border-left: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.navright .lang a { padding: 0; }
+@media (max-width: 640px) { .navright { font-size: 12px; gap: 4px; } .navright a { padding: 0 10px; }
+  .navright .lang { padding-left: 10px; } }
 
 /* ── hero ─────────────────────────────────────────────────────────────────── */
 .hero { position: relative; border-bottom: 1px solid var(--line); }

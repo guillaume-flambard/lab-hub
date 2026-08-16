@@ -1,4 +1,5 @@
 import { fetchState, subscribe, type WorkerActivity, type WorkerState } from "./activity";
+import { t } from "./i18n";
 
 // Voyage organique vivant : un chemin sinueux, l'agent voyage le long de la
 // courbe réelle (getPointAtLength) avec un easing humain (accélère/décélère),
@@ -31,6 +32,7 @@ export function renderScene(
   root: HTMLElement,
   projects: { name: string; status: string }[]
 ): void {
+  const d = t();
   const items = projects.map((p) => ({ name: p.name, live: p.status === "live" })).slice(0, 10);
   const { path, nodes: rawNodes } = buildPath(items.length);
   const nodes: ProjectNode[] = rawNodes.map((nd, i) => ({
@@ -41,7 +43,7 @@ export function renderScene(
     <div class="journey">
       <div class="journey-head">
         <span id="j-dot" class="j-dot"></span>
-        <span id="j-state" class="j-state">connexion…</span>
+        <span id="j-state" class="j-state">${d.sceneConnecting}</span>
         <span id="j-learned" class="j-learned"></span>
       </div>
 
@@ -208,16 +210,17 @@ export function renderScene(
   }
 
   function apply(a: WorkerActivity, learned?: number): void {
-    if (typeof learned === "number") learnedEl.textContent = `${learned} patterns appris`;
+    if (typeof learned === "number") learnedEl.textContent = d.sceneLearned(learned);
     if (a.repo === "system") {
-      stateEl.textContent = a.detail || "cycle en cours";
+      // a.detail vient du worker, non traduit
+      stateEl.textContent = a.detail || d.sceneCycle;
       if (a.status === "learned") { thinkEl.hidden = true; bubbleEl.classList.remove("show"); dotEl.classList.remove("live"); }
       if (a.status === "cycle_start") { visited.length = 0; drawNodes(); }
       return;
     }
     if (!visited.includes(a.repo)) visited.push(a.repo);
     current = a.repo;
-    stateEl.textContent = `sur ${a.repo}`;
+    stateEl.textContent = d.sceneOn(a.repo);
     dotEl.classList.add("live");
     travelToNode(a.repo);
     if (a.thinking) typeText(a.thinking);
@@ -226,7 +229,7 @@ export function renderScene(
 
   function applyState(s: WorkerState): void {
     if (s.activity) apply(s.activity, s.learned?.total_learned);
-    else { stateEl.textContent = "agent hors ligne"; dotEl.classList.remove("live"); }
+    else { stateEl.textContent = d.sceneOffline; dotEl.classList.remove("live"); }
   }
 
   // ---- mise en scène d'entrée ----

@@ -17,7 +17,8 @@ export interface Project {
 }
 
 export async function loadProjects(): Promise<Project[]> {
-  const res = await fetch("projects.json", { cache: "no-cache" });
+  // chemin absolu : les pages sont servies sous /fr/ et /en/
+  const res = await fetch("/projects.json", { cache: "no-cache" });
   if (!res.ok) throw new Error(`failed to load projects.json (${res.status})`);
   return res.json();
 }
