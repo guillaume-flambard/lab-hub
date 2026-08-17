@@ -98,7 +98,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 7,
+    "last_push_days": 8,
     "notes": {
       "fr": "Crédits, métrage d'usage et abonnements prêts à brancher.",
       "en": "Drop-in credits, usage metering and subscriptions."
@@ -143,7 +143,7 @@
     "language": "Rust",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 6,
+    "last_push_days": 7,
     "notes": {
       "fr": "Mémoire d'équipe partagée, prototype de runtime cognitif.",
       "en": "Shared team memory, cognitive runtime prototype."
@@ -158,7 +158,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 191,
+    "last_push_days": 192,
     "notes": {
       "fr": "Un assistant de négociation de contrats.",
       "en": "A contract negotiation assistant."
@@ -173,7 +173,7 @@
     "language": "JavaScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 6,
+    "last_push_days": 7,
     "notes": {
       "fr": "Le worker d'activité du lab, quand il reprend du service.",
       "en": "The lab's activity worker, once it's back up."
@@ -218,7 +218,7 @@
     "language": "JavaScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 165,
+    "last_push_days": 166,
     "notes": {
       "fr": "Un CLI pour analyser, tester et développer n'importe quel projet.",
       "en": "A CLI to analyze, test and develop any project."
@@ -263,7 +263,7 @@
     "language": "Python",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 8,
+    "last_push_days": 9,
     "notes": {
       "fr": "Un analyseur de retours Featurebase, thèmes groupés.",
       "en": "Theme-clustered analysis of a Featurebase feedback board."
@@ -278,7 +278,7 @@
     "language": "CSS",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 191,
+    "last_push_days": 192,
     "notes": {
       "fr": "Apprendre à construire des sites et à utiliser l'IA, pour les locaux.",
       "en": "Learn to build websites and use AI, for locals."
@@ -293,7 +293,7 @@
     "language": null,
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 0,
+    "last_push_days": 1,
     "notes": {
       "fr": "Un module BMAD pour les visions qui appartiennent à un autre.",
       "en": "A BMAD module for when the vision belongs to someone else."
@@ -315,6 +315,18 @@
     }
   },
   {
+    "name": "liquid-ui",
+    "status": "lab",
+    "url": null,
+    "repo": "https://github.com/guillaume-flambard/liquid-ui",
+    "description": "🌊 The first Apple Liquid Glass library for React - Authentic glass morphism effects with environmental blending",
+    "language": "TypeScript",
+    "lab_candidate": true,
+    "visibility": "PUBLIC",
+    "last_push_days": 336,
+    "notes": {}
+  },
+  {
     "name": "mama-moon-restaurant",
     "status": "lab",
     "url": null,
@@ -323,7 +335,7 @@
     "language": "Svelte",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 284,
+    "last_push_days": 285,
     "notes": {
       "fr": "Un site pour un restaurant thaï authentique.",
       "en": "A site for an authentic Thai restaurant."
@@ -338,7 +350,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 8,
+    "last_push_days": 9,
     "notes": {
       "fr": "Un agent Mastra qui lit un tableau de retours et dit ce qui compte.",
       "en": "A Mastra agent that reads a feedback board and tells you what matters."
@@ -368,7 +380,7 @@
     "language": "HTML",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 191,
+    "last_push_days": 192,
     "notes": {
       "fr": "Un site vitrine, à prendre comme il vient.",
       "en": "A marketing site, taken as it comes."
@@ -383,7 +395,7 @@
     "language": "Svelte",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 191,
+    "last_push_days": 192,
     "notes": {
       "fr": "Trois sites pour une famille de restaurants thaïs.",
       "en": "Three sites for a family of Thai restaurants."
@@ -413,7 +425,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 22,
+    "last_push_days": 23,
     "notes": {
       "fr": "Six outils en lecture seule pour la communauté n8n.",
       "en": "Six read-only tools for the n8n community."
@@ -428,7 +440,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 6,
+    "last_push_days": 7,
     "notes": {
       "fr": "Une IA open source qui appelle les entreprises pour vous.",
       "en": "Open-source AI that calls companies so you don't have to."
@@ -443,11 +455,23 @@
     "language": "JavaScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 7,
+    "last_push_days": 8,
     "notes": {
       "fr": "Un mineur de issues GitHub contribuables.",
       "en": "Mine GitHub for contributable issues."
     }
+  },
+  {
+    "name": "siame-vat-watch",
+    "status": "lab",
+    "url": null,
+    "repo": "https://github.com/guillaume-flambard/siame-vat-watch",
+    "description": "🇹🇭 Thailand VAT Compliance Platform for Non-Resident SaaS Companies - Automates 7% VAT calculations, B2B/B2C classification, and P.P.30.9 declarations",
+    "language": "PHP",
+    "lab_candidate": true,
+    "visibility": "PUBLIC",
+    "last_push_days": 310,
+    "notes": {}
   },
   {
     "name": "sku-regulator",
@@ -458,7 +482,7 @@
     "language": "Python",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 8,
+    "last_push_days": 9,
     "notes": {
       "fr": "D'un portail EU récalcitrant à des fiches produits conformes et multilingues.",
       "en": "From a stubborn EU portal to compliant, multi-country product listings."
@@ -473,7 +497,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 191,
+    "last_push_days": 192,
     "notes": {
       "fr": "Une app collaborative pour surveiller et aider les animaux errants.",
       "en": "A mobile-first app to monitor and help stray animals."
@@ -488,7 +512,7 @@
     "language": "HTML",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 191,
+    "last_push_days": 192,
     "notes": {
       "fr": "Un projet pensé pour les chasseurs de soleil.",
       "en": "A project made for the sun chasers."
@@ -503,7 +527,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 7,
+    "last_push_days": 8,
     "notes": {
       "fr": "Trackly : suivi de commissions B2B pour le tourisme thaïlandais.",
       "en": "Trackly: B2B commission tracking for Thailand's tourism sector."
@@ -518,7 +542,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 191,
+    "last_push_days": 192,
     "notes": {
       "fr": "Une app de conformité, terrain thaïlandais.",
       "en": "A compliance app for the Thai field."
@@ -533,26 +557,23 @@
     "language": "Python",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 165,
+    "last_push_days": 166,
     "notes": {
       "fr": "Une interface neurale universelle pour des systèmes LLM en production.",
       "en": "A universal neural interface for production LLM systems."
     }
   },
   {
-    "name": "echohub",
-    "status": "beta",
+    "name": "docusync",
+    "status": "archived",
     "url": null,
-    "repo": "https://github.com/guillaume-flambard/echohub",
-    "description": "Unified hub for managing your apps through AI conversations with Minerva. Laravel + Inertia/React.",
+    "repo": "https://github.com/guillaume-flambard/docusync",
+    "description": "DocuSync: B2B micro-SaaS that automatically syncs Google Workspace documents (Docs, Sheets, Slides).",
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 7,
-    "notes": {
-      "fr": "Un hub unifié : gérer ses apps en discutant.",
-      "en": "Manage your apps through AI conversations."
-    }
+    "last_push_days": 473,
+    "notes": {}
   },
   {
     "name": "largo-ai",
@@ -568,6 +589,18 @@
       "fr": "Formation IA générative en français pour les PME.",
       "en": "French generative-AI training for small and mid-size companies."
     }
+  },
+  {
+    "name": "menu-snap",
+    "status": "archived",
+    "url": null,
+    "repo": "https://github.com/guillaume-flambard/menu-snap",
+    "description": "Menu Snap: turn a photographed restaurant menu into a structured digital menu.",
+    "language": "TypeScript",
+    "lab_candidate": false,
+    "visibility": "PUBLIC",
+    "last_push_days": 471,
+    "notes": {}
   },
   {
     "name": "n8n-node-vetter",
@@ -593,26 +626,35 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 7,
+    "last_push_days": 8,
     "notes": {
       "fr": "Un node n8n pour Opn Payments : charges et remboursements.",
       "en": "An n8n node for Opn Payments: charges and refunds."
     }
   },
   {
-    "name": "phanganai-v2",
-    "status": "beta",
+    "name": "pacs-dog-map",
+    "status": "archived",
     "url": null,
-    "repo": "https://github.com/guillaume-flambard/phanganai-v2",
-    "description": "PhanganAI: a Neon Jungle booking and events app for Koh Phangan. Next.js + Capacitor mobile + Supabase.",
+    "repo": "https://github.com/guillaume-flambard/pacs-dog-map",
+    "description": "PACS Dog Map: professional animal sterilization tracker. Python.",
+    "language": "Python",
+    "lab_candidate": false,
+    "visibility": "PUBLIC",
+    "last_push_days": 376,
+    "notes": {}
+  },
+  {
+    "name": "portsense",
+    "status": "archived",
+    "url": null,
+    "repo": "https://github.com/guillaume-flambard/portsense",
+    "description": "PortSense: AI-assisted maritime container tracking SaaS. Real-time tracking with AI insights. Next.js and Prisma.",
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 8,
-    "notes": {
-      "fr": "Une app de réservation et d'événements pour Koh Phangan.",
-      "en": "A booking and events app for Koh Phangan."
-    }
+    "last_push_days": 385,
+    "notes": {}
   },
   {
     "name": "stasis",
@@ -628,5 +670,17 @@
       "fr": "Un orchestrateur de sprints anti-éparpillement.",
       "en": "An anti-scatter sprint orchestrator."
     }
+  },
+  {
+    "name": "stripe2telegram",
+    "status": "archived",
+    "url": null,
+    "repo": "https://github.com/guillaume-flambard/stripe2telegram",
+    "description": "Forward Stripe payment events to Telegram notifications.",
+    "language": "TypeScript",
+    "lab_candidate": false,
+    "visibility": "PUBLIC",
+    "last_push_days": 483,
+    "notes": {}
   }
 ]
