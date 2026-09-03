@@ -8,7 +8,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 23,
+    "last_push_days": 24,
     "notes": {
       "fr": "Un design system fluide en WebGL2 brut, pour le plaisir du rendu.",
       "en": "A raw WebGL2 fluid design system, for the joy of the render."
@@ -23,7 +23,7 @@
     "language": "HTML",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 21,
+    "last_push_days": 22,
     "notes": {
       "fr": "Score de compatibilité et moteur de portage d'apps iOS vers l'iPhone Fold.",
       "en": "Fold-ready score and porting engine for iOS apps on the iPhone Fold."
@@ -38,7 +38,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 23,
+    "last_push_days": 24,
     "notes": {
       "fr": "Un process de recrutement qu'on tape au clavier, terminal avant l'entretien.",
       "en": "A hiring journey you type into, terminal before the interview."
@@ -53,7 +53,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 0,
+    "last_push_days": 1,
     "notes": {
       "fr": "Cette page, justement : le carnet de bord du lab.",
       "en": "This very page: the lab's logbook."
@@ -68,7 +68,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 23,
+    "last_push_days": 24,
     "notes": {
       "fr": "Un design system personnel, précision et chaleur.",
       "en": "A personal design system: precision and warmth."
@@ -83,7 +83,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 24,
+    "last_push_days": 25,
     "notes": {
       "fr": "Crédits, métrage d'usage et abonnements prêts à brancher.",
       "en": "Drop-in credits, usage metering and subscriptions."
@@ -98,7 +98,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 21,
+    "last_push_days": 22,
     "notes": {
       "fr": "Un site vitrine Next.js, sans fioritures.",
       "en": "A Next.js marketing site, no frills."
@@ -113,7 +113,7 @@
     "language": "Python",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 10,
+    "last_push_days": 11,
     "notes": {
       "fr": "Le portfolio Memo Labs, point d'entrée du site.",
       "en": "The Memo Labs portfolio, entry point of the site."
@@ -128,7 +128,7 @@
     "language": "Python",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 15,
+    "last_push_days": 16,
     "notes": {}
   },
   {
@@ -140,25 +140,10 @@
     "language": "Rust",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 10,
+    "last_push_days": 11,
     "notes": {
       "fr": "Mémoire d'équipe partagée, prototype de runtime cognitif.",
       "en": "Shared team memory, cognitive runtime prototype."
-    }
-  },
-  {
-    "name": "accordo",
-    "status": "lab",
-    "url": null,
-    "repo": "https://github.com/guillaume-flambard/accordo",
-    "description": "Accordo: a contract negotiation assistant. Next.js 15 and TypeScript.",
-    "language": "TypeScript",
-    "lab_candidate": true,
-    "visibility": "PUBLIC",
-    "last_push_days": 208,
-    "notes": {
-      "fr": "Un assistant de négociation de contrats.",
-      "en": "A contract negotiation assistant."
     }
   },
   {
@@ -170,7 +155,7 @@
     "language": "JavaScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 23,
+    "last_push_days": 24,
     "notes": {
       "fr": "Le worker d'activité du lab, quand il reprend du service.",
       "en": "The lab's activity worker, once it's back up."
@@ -185,7 +170,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 34,
+    "last_push_days": 35,
     "notes": {
       "fr": "Des agents IA collectionnables, chacun utilisable.",
       "en": "Own AI agents as collectible, usable cards."
@@ -200,7 +185,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 24,
+    "last_push_days": 25,
     "notes": {
       "fr": "Un compagnon IA pour la réflexion personnelle.",
       "en": "An AI-guided companion for personal reflection."
@@ -215,7 +200,7 @@
     "language": "JavaScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 182,
+    "last_push_days": 183,
     "notes": {
       "fr": "Un CLI pour analyser, tester et développer n'importe quel projet.",
       "en": "A CLI to analyze, test and develop any project."
@@ -230,7 +215,7 @@
     "language": "Swift",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 59,
+    "last_push_days": 60,
     "notes": {
       "fr": "Un routeur d'URL macOS : chaque navigateur à sa place.",
       "en": "A macOS menubar app that routes URLs between browsers."
@@ -245,7 +230,7 @@
     "language": "Shell",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 16,
+    "last_push_days": 17,
     "notes": {}
   },
   {
@@ -257,7 +242,7 @@
     "language": "JavaScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 18,
+    "last_push_days": 19,
     "notes": {
       "fr": "Un pipeline agentique qui lit, trie et publie les notes de release.",
       "en": "An agentic pipeline that reads, ranks and publishes release notes."
@@ -272,25 +257,10 @@
     "language": "Python",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 25,
+    "last_push_days": 26,
     "notes": {
       "fr": "Un analyseur de retours Featurebase, thèmes groupés.",
       "en": "Theme-clustered analysis of a Featurebase feedback board."
-    }
-  },
-  {
-    "name": "island-code",
-    "status": "lab",
-    "url": null,
-    "repo": "https://github.com/guillaume-flambard/island-code",
-    "description": "Island Code for Locals: learn to build websites and use AI, for the people of Koh Phangan.",
-    "language": "CSS",
-    "lab_candidate": true,
-    "visibility": "PUBLIC",
-    "last_push_days": 208,
-    "notes": {
-      "fr": "Apprendre à construire des sites et à utiliser l'IA, pour les locaux.",
-      "en": "Learn to build websites and use AI, for locals."
     }
   },
   {
@@ -302,7 +272,7 @@
     "language": null,
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 17,
+    "last_push_days": 18,
     "notes": {
       "fr": "Un module BMAD pour les visions qui appartiennent à un autre.",
       "en": "A BMAD module for when the vision belongs to someone else."
@@ -317,7 +287,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 21,
+    "last_push_days": 22,
     "notes": {
       "fr": "Refonte du site d'un bar à bières de Montreuil.",
       "en": "Redesign of a Montreuil beer bar's site."
@@ -332,7 +302,7 @@
     "language": "Rust",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 1,
+    "last_push_days": 0,
     "notes": {}
   },
   {
@@ -344,7 +314,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 25,
+    "last_push_days": 26,
     "notes": {
       "fr": "Un agent Mastra qui lit un tableau de retours et dit ce qui compte.",
       "en": "A Mastra agent that reads a feedback board and tells you what matters."
@@ -359,25 +329,10 @@
     "language": "Shell",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 13,
+    "last_push_days": 14,
     "notes": {
       "fr": "Un plugin Claude Code maison : vault-enrich, new-project.",
       "en": "A homegrown Claude Code plugin: vault-enrich, new-project."
-    }
-  },
-  {
-    "name": "mojolink-site",
-    "status": "lab",
-    "url": null,
-    "repo": "https://github.com/guillaume-flambard/mojolink-site",
-    "description": "",
-    "language": "HTML",
-    "lab_candidate": true,
-    "visibility": "PUBLIC",
-    "last_push_days": 208,
-    "notes": {
-      "fr": "Un site vitrine, à prendre comme il vient.",
-      "en": "A marketing site, taken as it comes."
     }
   },
   {
@@ -389,7 +344,7 @@
     "language": "Svelte",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 208,
+    "last_push_days": 209,
     "notes": {
       "fr": "Trois sites pour une famille de restaurants thaïs.",
       "en": "Three sites for a family of Thai restaurants."
@@ -404,7 +359,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 39,
+    "last_push_days": 40,
     "notes": {
       "fr": "Un classement du backlog n8n par levier d'impact.",
       "en": "Ranks the open n8n backlog by leverage."
@@ -419,7 +374,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 39,
+    "last_push_days": 40,
     "notes": {
       "fr": "Six outils en lecture seule pour la communauté n8n.",
       "en": "Six read-only tools for the n8n community."
@@ -434,7 +389,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 23,
+    "last_push_days": 24,
     "notes": {
       "fr": "Une IA open source qui appelle les entreprises pour vous.",
       "en": "Open-source AI that calls companies so you don't have to."
@@ -449,7 +404,7 @@
     "language": "JavaScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 24,
+    "last_push_days": 25,
     "notes": {
       "fr": "Un mineur de issues GitHub contribuables.",
       "en": "Mine GitHub for contributable issues."
@@ -464,7 +419,7 @@
     "language": "Python",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 25,
+    "last_push_days": 26,
     "notes": {
       "fr": "D'un portail EU récalcitrant à des fiches produits conformes et multilingues.",
       "en": "From a stubborn EU portal to compliant, multi-country product listings."
@@ -479,7 +434,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 208,
+    "last_push_days": 209,
     "notes": {
       "fr": "Une app collaborative pour surveiller et aider les animaux errants.",
       "en": "A mobile-first app to monitor and help stray animals."
@@ -494,7 +449,7 @@
     "language": "HTML",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 208,
+    "last_push_days": 209,
     "notes": {
       "fr": "Un projet pensé pour les chasseurs de soleil.",
       "en": "A project made for the sun chasers."
@@ -509,7 +464,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 24,
+    "last_push_days": 25,
     "notes": {
       "fr": "Trackly : suivi de commissions B2B pour le tourisme thaïlandais.",
       "en": "Trackly: B2B commission tracking for Thailand's tourism sector."
@@ -524,7 +479,7 @@
     "language": "TypeScript",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 208,
+    "last_push_days": 209,
     "notes": {
       "fr": "Une app de conformité, terrain thaïlandais.",
       "en": "A compliance app for the Thai field."
@@ -539,7 +494,7 @@
     "language": "Python",
     "lab_candidate": true,
     "visibility": "PUBLIC",
-    "last_push_days": 182,
+    "last_push_days": 183,
     "notes": {
       "fr": "Une interface neurale universelle pour des systèmes LLM en production.",
       "en": "A universal neural interface for production LLM systems."
@@ -554,7 +509,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 24,
+    "last_push_days": 25,
     "notes": {
       "fr": "Formation IA générative en français pour les PME.",
       "en": "French generative-AI training for small and mid-size companies."
@@ -569,7 +524,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 37,
+    "last_push_days": 38,
     "notes": {
       "fr": "Vérifier un node n8n contre le standard verified.",
       "en": "Vet an n8n community node against the verified-node standard."
@@ -584,7 +539,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 24,
+    "last_push_days": 25,
     "notes": {
       "fr": "Un node n8n pour Opn Payments : charges et remboursements.",
       "en": "An n8n node for Opn Payments: charges and refunds."
@@ -599,7 +554,7 @@
     "language": "TypeScript",
     "lab_candidate": false,
     "visibility": "PUBLIC",
-    "last_push_days": 16,
+    "last_push_days": 17,
     "notes": {
       "fr": "Un orchestrateur de sprints anti-éparpillement.",
       "en": "An anti-scatter sprint orchestrator."
